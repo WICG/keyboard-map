@@ -102,6 +102,11 @@ return `"Unidentified"`.
 `code` values that correspond to "dead" keys in the current layout should return the corresponding
 combining accent character.
 
+### `keyboardchange` Event
+
+To detect when the keyboard layout has changed, pages can listen for the `keyboardchange` event,
+which will fire whenever the current keyboard layout changes.
+
 ## Alternative Proposals
 
 Requests for this feature have come up a number of times in the past, and various proposals
@@ -141,6 +146,10 @@ sometimes reveal the locale or layout.
 
 Require `[SecureContext]` for this feature?
 
+## Acknowledgements
+
+Thanks to…
+
 ## References
 
 [BCP47]
@@ -163,7 +172,3 @@ URL: [https://w3c.github.io/uievents-code/](https://w3c.github.io/uievents-code/
 [UI Events KeyboardEvent `key` Values](https://w3c.github.io/uievents-key/).
 G. Kacmarcik; T. Leithead. W3C Working Draft, 4 October 2017.
 URL: [https://w3c.github.io/uievents-key/](https://w3c.github.io/uievents-key/)
-
-## Acknowledgements
-
-Thanks to…
