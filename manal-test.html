@@ -1,0 +1,40 @@
+<html>
+<head>
+<script src="keyboard-polyfill.js"></script>
+<style media="screen" type="text/css">
+#result {
+	margin: 5px;
+	display: flex;
+	flex-flow: row wrap;
+}
+#result p {
+	border: 1px solid #8080ff;
+	background-color: #c0c0ff;
+	margin: 4px;
+	padding: 2px 4px;
+	flex: 1 0 200px;
+}
+</style>
+</head>
+<body>
+
+<script>
+function get_keyboard_map() {
+	var map = navigator.keyboard.getKeyMap();
+
+	var result = document.getElementById("result");
+	var keys = Object.keys(map).sort();
+	for (i = 0; i < keys.length; i++) {
+		var e = document.createElement("p");
+		e.textContent = keys[i] + ": " + map[keys[i]];
+		result.insertBefore(e, null);
+	}
+}
+</script>
+
+<p>Polyfill test for getKeyMap</p>
+<button onclick="get_keyboard_map()">Get Keyboard Map</button>
+<div id="result"></div>
+
+</body>
+</html>
