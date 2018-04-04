@@ -82,8 +82,6 @@ var Keyboard = function() {
 				//'MetaRight': 'Meta',
 				//ContextMenu
 				//'ControlRight': 'Control',
-				
-				'Unidentified': 'Unidentified'
 			}
 		}
 	};
