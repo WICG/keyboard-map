@@ -38,15 +38,6 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 	text: Quote
 </pre>
 
-<pre class="biblio">
-{
-	"GrabKeyboard": {
-		"title": "X11 GrabKeyboard API",
-		"href": "https://www.x.org/releases/X11R7.7/doc/xproto/x11protocol.html#requests:GrabKeyboard"
-	}
-}
-</pre>
-
 <h2 id="introduction">Introduction</h2>
 
 	On a {{KeyboardEvent}}, the {{KeyboardEvent/code}} attribute encodes
