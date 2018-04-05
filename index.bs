@@ -7,7 +7,7 @@ Group: webplatform
 Status: ED
 TR: http://www.w3.org/TR/keyboard-map/
 ED: https://wicg.github.io/keyboard-map/
-Repository: wicg/keyboard-lock
+Repository: wicg/keyboard-map
 Previous Version:
 	<none>
 Editor:
