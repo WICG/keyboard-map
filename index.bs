@@ -32,6 +32,7 @@ urlPrefix: http://www.w3.org/TR/uievents/#; type: dfn; spec: uievents;
 	text: dead key
 urlPrefix: http://www.w3.org/TR/uievents-key/#; type: dfn; spec: uievents-key;
 	text: key attribute value
+urlPrefix: http://www.w3.org/TR/uievents-code/#; type: dfn; spec: uievents-code;
 	text: writing system keys
 urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-code;
 	text: Quote
