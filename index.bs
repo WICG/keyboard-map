@@ -119,9 +119,18 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 			1. For each value |code| in the "KeyboardEvent.code" column of the
 				[=Writing System Keys=] table
 
-				1. If |code| is not supported by the current keyboard layout, then continue
+				1. Let |layout| be the highest priority ASCII-capable keyboard layout,
+					or the highest priority keyboard layout if none of the available
+					layouts are ASCII-capable.
+
+					Issue: Do we need the ability to select the highest-prio layout
+					regardless of whether or not it is ASCII-capable?
+					See <a href="https://github.com/wicg/keyboard-map/issues/1">Github Issue #1</a>
+
+				1. If |code| is not a valid key in the |layout|, then continue
 				
 				1. Let |key| be the {{KeyboardEvent/key}} value that would be generated
+					by |layout|
 					if the key identified by |code| was pressed with no modifiers.
 
 				1. If |key| is a [=dead key=], then
