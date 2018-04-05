@@ -83,7 +83,7 @@ are, this is the best surrogate.
 This API accepts a set of |code|s to lookup and returns multiple keys:
 
 ```
-var dictKeyMap = navigator.keyboard.getKeyMap();
+var dictKeyMap = navigator.keyboard.getKeyboardMap();
 ```
 
 where `dictKeyMap` is a dictionary where `code` maps to `key`, e.g.:
@@ -107,10 +107,10 @@ This proposal would have a `navigator.keyboard` object (already proposed as part
 
 ### Requesting the keyboard map
 
-A static `getKeyMap()` would return the current keyboard map.
+A static `getKeyboardMap()` would return the current keyboard map.
 
 ```
-  var dictKeyMap = navigator.keyboard.getKeyMap();
+  var dictKeyMap = navigator.keyboard.getKeyboardMap();
   var keyUp = dictKeyMap.KeyW;
   var keyLeft = dictKeyMap.KeyA;
   var keyDown = dictKeyMap.KeyS;
