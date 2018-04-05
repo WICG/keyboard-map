@@ -80,7 +80,7 @@ are, this is the best surrogate.
 
 ## Examples
 
-This API accepts a set of |code|s to lookup and returns multiple keys:
+This API returns the mapping for each key:
 
 ```
 var dictKeyMap = navigator.keyboard.getKeyboardMap();
