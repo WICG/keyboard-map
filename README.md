@@ -1,4 +1,4 @@
-# keyboard-map
+# Keyboard Map
 
 Draft specification for an API that returns a mapping table from `KeyboardEvent.code`
 values into strings that can be shown to the user to identify that physical key.
