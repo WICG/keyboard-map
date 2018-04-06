@@ -21,6 +21,11 @@ to the user to identify that particular key on the keyboard.
 * Being able to convert from a `key` value into the set of `code` values required to
 	generate that value, based on the current locale and layout.
 
+For additional information, see Mozilla's
+[Internationalize Your Keyboard Controls](https://hacks.mozilla.org/2017/03/internationalize-your-keyboard-controls/)
+document. In the "What's missing" section of that document, it mentions the need for an
+API like the one described here.
+
 ## Background
 
 ### `code` and `key` values
@@ -45,11 +50,6 @@ standard en-US layout with no modifiers, the `key` value is `"q"`. On the same l
 Shift key held down, the `key` value is `"Q"`. However, on a standard French keyboard, the `key` values
 would be `"a"` and `"A"`, respectively; for Russian, `"й"` and `"Й"`.
 
-For additional information, see Mozilla's
-[Internationalize Your Keyboard Controls](https://hacks.mozilla.org/2017/03/internationalize-your-keyboard-controls/)
-document. In the "What's missing" section of that document, it mentions the need for an
-API like the one described here.
-
 ### Keyboard layouts
 
 When more than one keyboard layout is installed on a computer, they are typically arranged
@@ -62,12 +62,13 @@ in the priority list that produces Latin characters. For example, a QWERTY,
 AZERTY or Dvorak layout.
 
 For keyboard shortcuts, this Latin value is what is commonly used for shortcuts in
-applications. Keyboards in areas where the common layout does not produce Latin
+applications (even when the native writing system is not Latin-based). Keyboards in areas
+where the common layout does not produce Latin
 characters will have both the native and the Latin characaters printed on the 
 physical key caps to make this easier for users..
 
 Note the assumption that the labels on the keyboard match the currently active keyboard
-locale. This is not always true, but since there is no way to know that the actual labels
+locale. This is usually, but not always, true, but since there is no way to know that the actual labels
 are, this is the best surrogate.
 
 ## User Scenarios
@@ -75,7 +76,8 @@ are, this is the best surrogate.
 ### Keypress instructions in Games
 
 Applications (like games) that use the KeyboardEvent `code` attribute to handle key events will often
-need to present a message to the user that references a particular key.
+need to present a message to the user that references a particular key, for example in a
+control settings dialog.
 
 E.g., If a game supports the standard WASD keys (to move up/left/down/right), then the instructions for
 the game need to be able to tell the user which keys to press. On a US-English keyboard, they are
