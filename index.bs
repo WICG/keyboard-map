@@ -8,8 +8,7 @@ Status: ED
 TR: http://www.w3.org/TR/keyboard-map/
 ED: https://wicg.github.io/keyboard-map/
 Repository: wicg/keyboard-map
-Previous Version:
-	<none>
+!Explainer: <a href="https://github.com/wicg/keyboard-map/blob/master/explainer.md">Keyboard Map Explainer</a>
 Editor:
     Gary Kacmarcik, Google, garykac@google.com
 Abstract:
