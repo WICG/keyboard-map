@@ -1179,7 +1179,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version 9a8bbb3f7fd01695a3aa5431fdbe423bbfee5195" name="generator">
   <link href="http://www.w3.org/TR/keyboard-map/" rel="canonical">
-  <meta content="9dbd27365f7555e3101d50618d550f9d8a859fef" name="document-revision">
+  <meta content="6cba5abdf113cc6016c1cf0cbfa189c4ae87f5a2" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1637,6 +1637,9 @@ showUserDialog("Press " + keyUp + " to move up.");
    <p>As with all APIs that return information about the current device state, there is
 	a risk of using this API to create a larger "fingerprint" of the user than if this
 	API was not available.</p>
+   <p>By returning info from the highest priority ASCII-capable keyboard layout instead of
+	the active layout, the value of this information for fingerprinting is reduced since
+	users are more likely to share the same values.</p>
    <p>Without this API, similar fingerprinting can still be attempted, but it is more
 	difficult since it would require the user to interact with the page by typing
 	characters and analyze the resulting <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/uievents/#keyboardevent-keyboardevent" id="ref-for-keyboardevent-keyboardevent④">KeyboardEvent</a></code>s.</p>

@@ -199,6 +199,10 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 	a risk of using this API to create a larger "fingerprint" of the user than if this
 	API was not available.
 	
+	By returning info from the highest priority ASCII-capable keyboard layout instead of
+	the active layout, the value of this information for fingerprinting is reduced since
+	users are more likely to share the same values.
+	
 	Without this API, similar fingerprinting can still be attempted, but it is more
 	difficult since it would require the user to interact with the page by typing
 	characters and analyze the resulting {{KeyboardEvent}}s.
