@@ -105,6 +105,9 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 		};
 		</pre>
 
+		Issue: Have getKeyboardMap return a Promise&lt;KeyboardMap&gt;?
+		See <a href="https://github.com/wicg/keyboard-map/issues/5">Github Issue #5</a>
+
 		<div id="keyboard-idl" dfn-for="Keyboard">
 
 		<div class="algorithm" data-algorithm="keyboard-getkeyboardmap">
@@ -176,6 +179,9 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 	
 		The [=keyboardchange=] event fires whenever the current keyboard layout is
 		changed.
+
+		Issue: Bikeshed on name for this event.
+		See <a href="https://github.com/wicg/keyboard-map/issues/6">Github Issue #6</a>
 		 
 		If the keyboard layout changes while the user agent is not the foreground
 		application, then the [=keyboardchange=] event MUST fire when the user agent
@@ -213,7 +219,8 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 	Thanks to the following people for the discussions that lead
 	to the creation of this proposal:
 
-	Masayuki Nakano (Mozilla)
+	Masayuki Nakano (Mozilla),
+	Julien Wajsberg (Mozilla)
 
 <h2 id="glossary">Glossary</h2>
 

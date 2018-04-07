@@ -1179,7 +1179,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version 9a8bbb3f7fd01695a3aa5431fdbe423bbfee5195" name="generator">
   <link href="http://www.w3.org/TR/keyboard-map/" rel="canonical">
-  <meta content="2cdc835789ba47199076f4bc1219dd333f3ddf25" name="document-revision">
+  <meta content="2a2e4a4e14e08c257dc4005a246e605963bcc158" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1426,7 +1426,7 @@ pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1>Keyboard Map</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-04-05">5 April 2018</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2018-04-06">6 April 2018</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1564,6 +1564,8 @@ set of buttons and need to describe those buttons to the user.</p>
   <a class="n" data-link-type="idl-name" href="#keyboardmap" id="ref-for-keyboardmap①">KeyboardMap</a> <dfn class="nv idl-code" data-dfn-for="Keyboard" data-dfn-type="method" data-export="" data-lt="getKeyboardMap()" id="dom-keyboard-getkeyboardmap"><code>getKeyboardMap</code><a class="self-link" href="#dom-keyboard-getkeyboardmap"></a></dfn>();
 };
 </pre>
+   <p class="issue" id="issue-32878b3f"><a class="self-link" href="#issue-32878b3f"></a> Have getKeyboardMap return a Promise&lt;KeyboardMap>?
+		See <a href="https://github.com/wicg/keyboard-map/issues/5">Github Issue #5</a></p>
    <div id="keyboard-idl">
     <div class="algorithm" data-algorithm="keyboard-getkeyboardmap">
      <h4 class="heading settled" data-level="2.3.1" id="h-keyboard-getkeyboardmap"><span class="secno">2.3.1. </span><span class="content"><dfn class="dfn-paneled" data-dfn-for="Keyboard" data-dfn-type="dfn" data-noexport="" id="keyboard-getkeyboardmap">getKeyboardMap()</dfn></span><a class="self-link" href="#h-keyboard-getkeyboardmap"></a></h4>
@@ -1622,6 +1624,8 @@ showUserDialog("Press " + keyUp + " to move up.");
    <h3 class="heading settled" data-level="3.1" id="keyboardchange-event"><span class="secno">3.1. </span><span class="content">The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="keyboardchange">keyboardchange</dfn> Event</span><a class="self-link" href="#keyboardchange-event"></a></h3>
    <p>The <a data-link-type="dfn" href="#keyboardchange" id="ref-for-keyboardchange">keyboardchange</a> event fires whenever the current keyboard layout is
 		changed.</p>
+   <p class="issue" id="issue-b1080f6f"><a class="self-link" href="#issue-b1080f6f"></a> Bikeshed on name for this event.
+		See <a href="https://github.com/wicg/keyboard-map/issues/6">Github Issue #6</a></p>
    <p>If the keyboard layout changes while the user agent is not the foreground
 		application, then the <a data-link-type="dfn" href="#keyboardchange" id="ref-for-keyboardchange①">keyboardchange</a> event MUST fire when the user agent
 		regains focus.</p>
@@ -1646,7 +1650,8 @@ showUserDialog("Press " + keyUp + " to move up.");
    <h2 class="heading settled" data-level="7" id="acknowledgements-contributors"><span class="secno">7. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements-contributors"></a></h2>
    <p>Thanks to the following people for the discussions that lead
 	to the creation of this proposal:</p>
-   <p>Masayuki Nakano (Mozilla)</p>
+   <p>Masayuki Nakano (Mozilla),
+	Julien Wajsberg (Mozilla)</p>
    <h2 class="heading settled" data-level="8" id="glossary"><span class="secno">8. </span><span class="content">Glossary</span><a class="self-link" href="#glossary"></a></h2>
    <dl>
     <dt data-md=""><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="scancode">scancode</dfn>
@@ -1780,9 +1785,13 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
 </pre>
   <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
   <div style="counter-reset:issue">
+   <div class="issue"> Have getKeyboardMap return a Promise&lt;KeyboardMap>?
+		See <a href="https://github.com/wicg/keyboard-map/issues/5">Github Issue #5</a><a href="#issue-32878b3f"> ↵ </a></div>
    <div class="issue"> Do we need the ability to select the highest-prio layout
 regardless of whether or not it is ASCII-capable?
 See <a href="https://github.com/wicg/keyboard-map/issues/1">Github Issue #1</a><a href="#issue-b6e6163c"> ↵ </a></div>
+   <div class="issue"> Bikeshed on name for this event.
+		See <a href="https://github.com/wicg/keyboard-map/issues/6">Github Issue #6</a><a href="#issue-b1080f6f"> ↵ </a></div>
   </div>
   <aside class="dfn-panel" data-for="navigator-keyboard">
    <b><a href="#navigator-keyboard">#navigator-keyboard</a></b><b>Referenced in:</b>
