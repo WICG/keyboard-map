@@ -105,7 +105,7 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 		};
 		</pre>
 
-		Issue: Have getKeyboardMap return a Promise&lt;KeyboardMap&gt;?
+		Issue: Have `getKeyboardMap()` return a `Promise&lt;KeyboardMap&gt;`?
 		See <a href="https://github.com/wicg/keyboard-map/issues/5">Github Issue #5</a>
 
 		<div id="keyboard-idl" dfn-for="Keyboard">
@@ -156,7 +156,7 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 			To show instructions about which key to press in a game:
 			<pre>
 				var map = navigator.keyboard.getKeyboardMap();
-				var keyUp = map.KeyW;
+				var keyUp = map.get("KeyW");
 				showUserDialog("Press " + keyUp + " to move up.");
 			</pre>
 			</div>
