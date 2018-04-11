@@ -13,8 +13,8 @@ Editor:
     Gary Kacmarcik, Google, garykac@google.com
 Abstract:
 	This specification defines an API that allows websites to convert from a given
-	{{KeyboardEvent}}.{{KeyboardEvent/code}} value to a
-	{{KeyboardEvent}}.{{KeyboardEvent/key}} value that can be shown to the user to
+	{{KeyboardEvent/code}} value to a
+	valid {{KeyboardEvent/key}} value that can be shown to the user to
 	identify the given key.
 	The conversion from {{KeyboardEvent/code}} to {{KeyboardEvent/key}} is based on
 	the user's currently selected keyboard layout.
@@ -118,7 +118,7 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 
 			1. Let |map| be a new {{KeyboardMap}} that is initially empty.
 		
-			1. For each value |code| in the "KeyboardEvent.code" column of the
+			1. For each value |code| in the "KeyboardEvent code" column of the
 				[=Writing System Keys=] table
 
 				1. Let |layout| be the highest priority ASCII-capable keyboard layout,
