@@ -1179,7 +1179,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version 9a8bbb3f7fd01695a3aa5431fdbe423bbfee5195" name="generator">
   <link href="http://www.w3.org/TR/keyboard-map/" rel="canonical">
-  <meta content="c077e18f300f9e6ef484ed1de43f80e0db426785" name="document-revision">
+  <meta content="e2a96cacdb13042be18ffe92781f5bb89e8b8529" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1488,7 +1488,7 @@ set of buttons and need to describe those buttons to the user.</p>
       <li>
        <a href="#keyboard-interface"><span class="secno">2.3</span> <span class="content">Keyboard Interface</span></a>
        <ol class="toc">
-        <li><a href="#h-keyboard-getkeyboardmap"><span class="secno">2.3.1</span> <span class="content"><span>getKeyboardMap()</span></span></a>
+        <li><a href="#h-keyboard-getlayoutmap"><span class="secno">2.3.1</span> <span class="content"><span>getLayoutMap()</span></span></a>
        </ol>
      </ol>
     <li>
@@ -1553,22 +1553,22 @@ set of buttons and need to describe those buttons to the user.</p>
     </div>
    </div>
    <h3 class="heading settled" data-level="2.2" id="keyboard-map-interface"><span class="secno">2.2. </span><span class="content">Keyboard Interface</span><a class="self-link" href="#keyboard-map-interface"></a></h3>
-<pre class="idl highlight def" data-highlight="webidl"><span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="keyboardmap"><code>KeyboardMap</code></dfn> {
+<pre class="idl highlight def" data-highlight="webidl"><span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="keyboardlayoutmap"><code>KeyboardLayoutMap</code></dfn> {
   <span class="kt">readonly</span> <span class="kt">maplike</span>&lt;<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString" id="ref-for-idl-DOMString"><span class="kt">DOMString</span></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString" id="ref-for-idl-DOMString①"><span class="kt">DOMString</span></a>>;
 };
 </pre>
-   <div id="keyboardmap-idl">
-    <p>The <code class="idl"><a data-link-type="idl" href="#keyboardmap" id="ref-for-keyboardmap">KeyboardMap</a></code> is a readonly collection of mappings from <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/uievents/#dom-keyboardevent-code" id="ref-for-dom-keyboardevent-code⑤">code</a></code> values to <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/uievents/#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key⑥">key</a></code> values.</p>
+   <div id="keyboardlayoutmap-idl">
+    <p>The <code class="idl"><a data-link-type="idl" href="#keyboardlayoutmap" id="ref-for-keyboardlayoutmap">KeyboardLayoutMap</a></code> is a readonly collection of mappings from <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/uievents/#dom-keyboardevent-code" id="ref-for-dom-keyboardevent-code⑤">code</a></code> values to <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/uievents/#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key⑥">key</a></code> values.</p>
    </div>
    <h3 class="heading settled" data-level="2.3" id="keyboard-interface"><span class="secno">2.3. </span><span class="content">Keyboard Interface</span><a class="self-link" href="#keyboard-interface"></a></h3>
 <pre class="idl highlight def" data-highlight="webidl">[<a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext①">SecureContext</a>, <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed">Exposed</a>=<span class="n">Window</span>] <span class="kt">interface</span> <dfn class="nv dfn-paneled idl-code" data-dfn-type="interface" data-export="" id="keyboard"><code>Keyboard</code></dfn> {
-  <span class="kt">Promise</span>&lt;<a class="n" data-link-type="idl-name" href="#keyboardmap" id="ref-for-keyboardmap①">KeyboardMap</a>> <dfn class="nv idl-code" data-dfn-for="Keyboard" data-dfn-type="method" data-export="" data-lt="getKeyboardMap()" id="dom-keyboard-getkeyboardmap"><code>getKeyboardMap</code><a class="self-link" href="#dom-keyboard-getkeyboardmap"></a></dfn>();
+  <span class="kt">Promise</span>&lt;<a class="n" data-link-type="idl-name" href="#keyboardlayoutmap" id="ref-for-keyboardlayoutmap①">KeyboardLayoutMap</a>> <dfn class="nv idl-code" data-dfn-for="Keyboard" data-dfn-type="method" data-export="" data-lt="getLayoutMap()" id="dom-keyboard-getlayoutmap"><code>getLayoutMap</code><a class="self-link" href="#dom-keyboard-getlayoutmap"></a></dfn>();
 };
 </pre>
    <div id="keyboard-idl">
-    <div class="algorithm" data-algorithm="keyboard-getkeyboardmap">
-     <h4 class="heading settled" data-level="2.3.1" id="h-keyboard-getkeyboardmap"><span class="secno">2.3.1. </span><span class="content"><dfn class="dfn-paneled" data-dfn-for="Keyboard" data-dfn-type="dfn" data-noexport="" id="keyboard-getkeyboardmap">getKeyboardMap()</dfn></span><a class="self-link" href="#h-keyboard-getkeyboardmap"></a></h4>
-     <p>When <a data-link-type="dfn" href="#keyboard-getkeyboardmap" id="ref-for-keyboard-getkeyboardmap">getKeyboardMap()</a> is called, the user agent must
+    <div class="algorithm" data-algorithm="keyboard-getlayoutmap">
+     <h4 class="heading settled" data-level="2.3.1" id="h-keyboard-getlayoutmap"><span class="secno">2.3.1. </span><span class="content"><dfn class="dfn-paneled" data-dfn-for="Keyboard" data-dfn-type="dfn" data-noexport="" id="keyboard-getlayoutmap">getLayoutMap()</dfn></span><a class="self-link" href="#h-keyboard-getlayoutmap"></a></h4>
+     <p>When <a data-link-type="dfn" href="#keyboard-getlayoutmap" id="ref-for-keyboard-getlayoutmap">getLayoutMap()</a> is called, the user agent must
 			run the following steps:</p>
      <ol>
       <li data-md="">
@@ -1577,7 +1577,7 @@ set of buttons and need to describe those buttons to the user.</p>
        <p>Run the following steps <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel" id="ref-for-in-parallel">in parallel</a>:</p>
        <ol>
         <li data-md="">
-         <p>Let <var>map</var> be a new <code class="idl"><a data-link-type="idl" href="#keyboardmap" id="ref-for-keyboardmap②">KeyboardMap</a></code> that is initially empty.</p>
+         <p>Let <var>map</var> be a new <code class="idl"><a data-link-type="idl" href="#keyboardlayoutmap" id="ref-for-keyboardlayoutmap②">KeyboardLayoutMap</a></code> that is initially empty.</p>
         <li data-md="">
          <p>For each value <var>code</var> in the "KeyboardEvent code" column of the <a data-link-type="dfn" href="http://www.w3.org/TR/uievents-code/#writing-system-keys" id="ref-for-writing-system-keys">Writing System Keys</a> table</p>
          <ol>
@@ -1615,9 +1615,9 @@ combining character that corresponds to the <a data-link-type="dfn" href="http:/
      <p>User agents may choose to cache the <var>map</var> and return the cached value as
 			long as the cache is updated (or invalidated) whenever the keyboard layout
 			changes.</p>
-     <div class="example" id="example-d248fe25">
-      <a class="self-link" href="#example-d248fe25"></a> To show instructions about which key to press in a game: 
-<pre>navigator.keyboard.getKeyboardMap().then(function(map) {
+     <div class="example" id="example-1898f602">
+      <a class="self-link" href="#example-1898f602"></a> To show instructions about which key to press in a game: 
+<pre>navigator.keyboard.getLayoutMap().then(function(map) {
   var keyUp = map.get("KeyW");
   showUserDialog("Press " + keyUp + " to move up.");
 });
@@ -1709,10 +1709,10 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   <h3 class="no-num no-ref heading settled" id="index-defined-here"><span class="content">Terms defined by this specification</span><a class="self-link" href="#index-defined-here"></a></h3>
   <ul class="index">
    <li>
-    getKeyboardMap()
+    getLayoutMap()
     <ul>
-     <li><a href="#keyboard-getkeyboardmap">dfn for Keyboard</a><span>, in §2.3.1</span>
-     <li><a href="#dom-keyboard-getkeyboardmap">method for Keyboard</a><span>, in §2.3</span>
+     <li><a href="#keyboard-getlayoutmap">dfn for Keyboard</a><span>, in §2.3.1</span>
+     <li><a href="#dom-keyboard-getlayoutmap">method for Keyboard</a><span>, in §2.3</span>
     </ul>
    <li>
     keyboard
@@ -1722,7 +1722,7 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
     </ul>
    <li><a href="#keyboard">Keyboard</a><span>, in §2.3</span>
    <li><a href="#keyboardchange">keyboardchange</a><span>, in §3.1</span>
-   <li><a href="#keyboardmap">KeyboardMap</a><span>, in §2.2</span>
+   <li><a href="#keyboardlayoutmap">KeyboardLayoutMap</a><span>, in §2.2</span>
    <li><a href="#dfn-processing-equivalence">processing equivalence</a><span>, in §Unnumbered section</span>
    <li><a href="#scancode">scancode</a><span>, in §8</span>
   </ul>
@@ -1784,12 +1784,12 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   [<a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext②">SecureContext</a>, <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject①">SameObject</a>] <span class="kt">readonly</span> <span class="kt">attribute</span> <a class="n" data-link-type="idl-name" href="#keyboard" id="ref-for-keyboard②">Keyboard</a> <a class="nv" data-readonly="" data-type="Keyboard" href="#dom-navigator-keyboard"><code>keyboard</code></a>;
 };
 
-<span class="kt">interface</span> <a class="nv" href="#keyboardmap"><code>KeyboardMap</code></a> {
+<span class="kt">interface</span> <a class="nv" href="#keyboardlayoutmap"><code>KeyboardLayoutMap</code></a> {
   <span class="kt">readonly</span> <span class="kt">maplike</span>&lt;<a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString" id="ref-for-idl-DOMString②"><span class="kt">DOMString</span></a>, <a class="n idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString" id="ref-for-idl-DOMString①①"><span class="kt">DOMString</span></a>>;
 };
 
 [<a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext①①">SecureContext</a>, <a class="nv idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①">Exposed</a>=<span class="n">Window</span>] <span class="kt">interface</span> <a class="nv" href="#keyboard"><code>Keyboard</code></a> {
-  <span class="kt">Promise</span>&lt;<a class="n" data-link-type="idl-name" href="#keyboardmap" id="ref-for-keyboardmap①①">KeyboardMap</a>> <a class="nv" href="#dom-keyboard-getkeyboardmap"><code>getKeyboardMap</code></a>();
+  <span class="kt">Promise</span>&lt;<a class="n" data-link-type="idl-name" href="#keyboardlayoutmap" id="ref-for-keyboardlayoutmap①①">KeyboardLayoutMap</a>> <a class="nv" href="#dom-keyboard-getlayoutmap"><code>getLayoutMap</code></a>();
 };
 
 </pre>
@@ -1807,12 +1807,12 @@ See <a href="https://github.com/wicg/keyboard-map/issues/1">Github Issue #1</a><
     <li><a href="#ref-for-navigator-keyboard">2.1.1. keyboard</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="keyboardmap">
-   <b><a href="#keyboardmap">#keyboardmap</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="keyboardlayoutmap">
+   <b><a href="#keyboardlayoutmap">#keyboardlayoutmap</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-keyboardmap">2.2. Keyboard Interface</a>
-    <li><a href="#ref-for-keyboardmap①">2.3. Keyboard Interface</a>
-    <li><a href="#ref-for-keyboardmap②">2.3.1. getKeyboardMap()</a>
+    <li><a href="#ref-for-keyboardlayoutmap">2.2. Keyboard Interface</a>
+    <li><a href="#ref-for-keyboardlayoutmap①">2.3. Keyboard Interface</a>
+    <li><a href="#ref-for-keyboardlayoutmap②">2.3.1. getLayoutMap()</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="keyboard">
@@ -1822,10 +1822,10 @@ See <a href="https://github.com/wicg/keyboard-map/issues/1">Github Issue #1</a><
     <li><a href="#ref-for-keyboard①">2.1.1. keyboard</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="keyboard-getkeyboardmap">
-   <b><a href="#keyboard-getkeyboardmap">#keyboard-getkeyboardmap</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="keyboard-getlayoutmap">
+   <b><a href="#keyboard-getlayoutmap">#keyboard-getlayoutmap</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-keyboard-getkeyboardmap">2.3.1. getKeyboardMap()</a>
+    <li><a href="#ref-for-keyboard-getlayoutmap">2.3.1. getLayoutMap()</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="keyboardchange">
