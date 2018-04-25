@@ -179,16 +179,16 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 
 <h2 id="keyboard-events">Keyboard Events</h2>
 
-	<h3 id="keyboardchange-event">The <dfn>keyboardchange</dfn> Event</h2>
+	<h3 id="keyboardlayoutchange-event">The <dfn>keyboardlayoutchange</dfn> Event</h2>
 	
-		The [=keyboardchange=] event fires whenever the current keyboard layout is
+		The [=keyboardlayoutchange=] event fires whenever the current keyboard layout is
 		changed.
 
 		Issue: Bikeshed on name for this event.
 		See <a href="https://github.com/wicg/keyboard-map/issues/6">Github Issue #6</a>
 		 
 		If the keyboard layout changes while the user agent is not the foreground
-		application, then the [=keyboardchange=] event MUST fire when the user agent
+		application, then the [=keyboardlayoutchange=] event MUST fire when the user agent
 		regains focus.
 	
 <h2 id="mobile">Mobile Device Considerations</h2>
