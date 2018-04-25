@@ -82,6 +82,11 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 
 		</div><!-- dfn-for Navigator -->
 
+		Note: The [=keyboard=] object is also defined in the 
+		<a href="https://w3c.github.io/keyboard-lock/#navigator-interface">Keyboard Lock</a>
+		specification. These two definitions will be merged once we decide on a final
+		home for these specifications.
+		
 	<h3 id="keyboard-map-interface">Keyboard Interface</h3>
 
 		<pre class="idl" data-highlight="webidl">
