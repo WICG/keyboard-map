@@ -196,7 +196,7 @@ var keymap = {};
 var k = navigator.keyboard.getKey;
 Promise.all([k("KeyW"),k("KeyA"),k("KeyS"),k("KeyD"),
              k("KeyI"),k("KeyJ"),k("KeyK"),k("KeyL")]).then(values => {
-               // Need to associated each return value with the code that produced it.
+               // Need to associate each return value with the code that produced it.
                // Index into |values| must match order of Promises.
                keymap["KeyW"] = values[0];
                keymap["KeyA"] = values[1];
