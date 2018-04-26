@@ -109,7 +109,9 @@ The standard use for this API is to call it to get the current mapping and then 
 mapping table to update the UI.
 
 ```
-var keyMap = navigator.keyboard.getLayoutMap();
+navigator.keyboard.getLayoutMap().then(function(keyMap) {
+  // Use keyMap
+});
 ```
 
 where `keyMap` is a dictionary where `code` maps to `key`, e.g.:
@@ -125,9 +127,10 @@ where `keyMap` is a dictionary where `code` maps to `key`, e.g.:
 The mapping data can be used as follows:
 
 ```
-var keyMap = navigator.keyboard.getLayoutMap();
-var keyUp = keyMap.get("KeyW");
-showUserDialog("Press " + keyUp + " to move up.");
+navigator.keyboard.getLayoutMap().then(function(keyMap) {
+  var keyUp = keyMap.get("KeyW");
+  showUserDialog("Press " + keyUp + " to move up.");
+});
 ```
 
 ### `keyboardchange` Event
@@ -141,3 +144,73 @@ navigator.keyboard.addEventListener("keyboardchange", function(){
 	updateGameControlSettingPage();
 });
 ```
+
+## Alternative Proposals
+
+We initially considered having an API that would return the mapping for a single key, but
+received feedback that it would be preferable to have the entire map all at once (since
+that would avoid needing to ask for dozens of keys individually).
+
+The simple single-key API was:
+
+```
+DOMString getKey(DOMString code)
+```
+
+which would have been used as follows for getting a single value:
+
+```
+var keyUp = navigator.keyboard.getKey("KeyW");
+```
+
+or for building a map of multiple values:
+
+```
+var keymap = {};
+var keys = ["KeyW", "KeyA", "KeyS", "KeyD", "Key", "Key", "Key", "Key", "Key"];
+keys.foreach(function(code) {
+	keymap[code] = navigator.keyboard.getKey(code);
+});
+```
+
+Requiring that this API return a Promise complicates matters a bit. The simple API 
+would become:
+
+```
+Promise<DOMString> getKey(DOMString code)
+```
+
+getting a single value:
+
+```
+navigator.keyboard.getKey("KeyW").then(function(val) {
+  var keyUp = val;
+  // Do something with it.
+});
+```
+
+and getting multiple values:
+
+```
+var keymap = {};
+var k = navigator.keyboard.getKey;
+Promise.all([k("KeyW"),k("KeyA"),k("KeyS"),k("KeyD"),
+             k("KeyI"),k("KeyJ"),k("KeyK"),k("KeyL")]).then(values => {
+               // Need to associated each return value with the code that produced it.
+               // Index into |values| must match order of Promises.
+               keymap["KeyW"] = values[0];
+               keymap["KeyA"] = values[1];
+               keymap["KeyS"] = values[2];
+               keymap["KeyD"] = values[3];
+               keymap["KeyI"] = values[4];
+               keymap["KeyJ"] = values[5];
+               keymap["KeyK"] = values[6];
+               keymap["KeyL"] = values[7];
+             }, () => {
+               // Unable to get map
+             })
+```
+
+This is awkward and error-prone to add or remove keys from the list.
+Since we know that a primary use case (games) requires a relatively large number of 
+keys to be mapped, we determined that this approach was unacceptable.
