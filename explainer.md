@@ -103,13 +103,13 @@ E.g., an application may have tools for Pan, Move, Rotate and Scale and assign "
 
 ## Examples
 
-### `getKeyboardMap()`
+### `getLayoutMap()`
 
 The standard use for this API is to call it to get the current mapping and then use that
 mapping table to update the UI.
 
 ```
-var keyMap = navigator.keyboard.getKeyboardMap();
+var keyMap = navigator.keyboard.getLayoutMap();
 ```
 
 where `keyMap` is a dictionary where `code` maps to `key`, e.g.:
@@ -125,8 +125,8 @@ where `keyMap` is a dictionary where `code` maps to `key`, e.g.:
 The mapping data can be used as follows:
 
 ```
-var keyMap = navigator.keyboard.getKeyboardMap();
-var keyUp = keyMap.KeyW;
+var keyMap = navigator.keyboard.getLayoutMap();
+var keyUp = keyMap.get("KeyW");
 showUserDialog("Press " + keyUp + " to move up.");
 ```
 
@@ -136,7 +136,7 @@ To detect when the keyboard layout has changed, pages can listen for the `keyboa
 which will fire whenever the current keyboard layout changes.
 
 ```
-document.addEventListener("keyboardchange", function(){
+navigator.keyboard.addEventListener("keyboardchange", function(){
 	// Refresh the game control settings page with current layout.
 	updateGameControlSettingPage();
 });
