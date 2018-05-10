@@ -84,7 +84,7 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 
 		Note: The [=keyboard=] object is also defined in the 
 		<a href="https://w3c.github.io/keyboard-lock/#navigator-interface">Keyboard Lock</a>
-		specification. These two definitions will be merged once we decide on a final
+		specification. These two definitions will be reconciled once we decide on a final
 		home for these specifications.
 		
 	<h3 id="keyboard-map-interface">Keyboard Interface</h3>
@@ -184,16 +184,16 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 
 <h2 id="keyboard-events">Keyboard Events</h2>
 
-	<h3 id="keyboardlayoutchange-event">The <dfn>keyboardlayoutchange</dfn> Event</h2>
+	<h3 id="layoutchange-event">The <dfn>layoutchange</dfn> Event</h2>
 	
-		The [=keyboardlayoutchange=] event fires on the [=keyboard=] object whenever the
+		The [=layoutchange=] event fires on the [=keyboard=] object whenever the
 		current keyboard layout is changed. A layout change can occur when the user
 		selects a new layout, or it may happen automatically when the user performs an
 		action (e.g., switching to an application that has a preferred layout).
 		
 		Note the following:
 		
-		* Modifying the set of available layouts does not trigger a [=keyboardlayoutchange=]
+		* Modifying the set of available layouts does not trigger a [=layoutchange=]
 			event, unless the modification changes the current layout.
 		
 		* Adding or removing a physical keyboard does not trigger an event unless
@@ -205,13 +205,13 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 			highest priority ASCII-capable layout remains the same.
 
 		If the keyboard layout changes while the user agent is not the foreground
-		application, then the [=keyboardlayoutchange=] event MUST fire when the user agent
+		application, then the [=layoutchange=] event MUST fire when the user agent
 		regains focus.
 
 		<div class="example">
 		To handle this event:
 		<pre>
-			navigator.keyboard.addEventListener("keyboardlayoutchange", function() {
+			navigator.keyboard.addEventListener("layoutchange", function() {
 				// Update user keyboard map settings
 				updateGameControlSettingsPage();
 			});
@@ -251,7 +251,7 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 	difficult since it would require the user to interact with the page by typing
 	characters and analyze the resulting {{KeyboardEvent}}s.
 	
-	<h3 id="privacy-ua">Privacy Mitigations</h3>
+	<h3 id="privacy-mitigations">Privacy Mitigations</h3>
 	
 	User agents that are concerned about the privacy impact of providing this
 	keyboard mapping information can consider the following:
@@ -263,12 +263,13 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 		had a "privacy mode" that always returned a US-QWERTY layout mapping would
 		actually be providing more identifying information for users in the UK than
 		the actual mapping would (since most users in the UK do not use a US layout).
-	
+
 <h2 id="acknowledgements-contributors">Acknowledgements</h2>
 
 	Thanks to the following people for the discussions that lead
 	to the creation of this proposal:
 
+	Joe Downing (Google),
 	Masayuki Nakano (Mozilla),
 	Julien Wajsberg (Mozilla)
 
