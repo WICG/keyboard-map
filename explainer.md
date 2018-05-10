@@ -133,13 +133,13 @@ navigator.keyboard.getLayoutMap().then(function(keyMap) {
 });
 ```
 
-### `keyboardchange` Event
+### `layoutchange` Event
 
-To detect when the keyboard layout has changed, pages can listen for the `keyboardchange` event,
+To detect when the keyboard layout has changed, pages can listen for the `layoutchange` event,
 which will fire whenever the current keyboard layout changes.
 
 ```
-navigator.keyboard.addEventListener("keyboardchange", function(){
+navigator.keyboard.addEventListener("layoutchange", function(){
 	// Refresh the game control settings page with current layout.
 	updateGameControlSettingPage();
 });
