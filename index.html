@@ -1179,7 +1179,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version eef4acd901f774f3d130c245844f8ea23319c1b2" name="generator">
   <link href="http://www.w3.org/TR/keyboard-map/" rel="canonical">
-  <meta content="3fd321dca8b2fafbbce4e3977776abcda78b7d4f" name="document-revision">
+  <meta content="88c1ec200429ed5a2d405547e1e829f73935d711" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1605,9 +1605,9 @@ set of buttons and need to describe those buttons to the user.</p>
          <p>For each value <var>code</var> in the "KeyboardEvent code" column of the <a data-link-type="dfn" href="http://www.w3.org/TR/uievents-code/#writing-system-keys" id="ref-for-writing-system-keys">Writing System Keys</a> table</p>
          <ol>
           <li data-md="">
-           <p>Let <var>layout</var> be the highest priority ASCII-capable keyboard layout,
+           <p>Let <var>layout</var> be the highest priority <a data-link-type="dfn" href="#ascii-capable" id="ref-for-ascii-capable">ASCII-capable</a> keyboard layout,
 or the highest priority keyboard layout if none of the available
-layouts are ASCII-capable.</p>
+layouts are <a data-link-type="dfn" href="#ascii-capable" id="ref-for-ascii-capable①">ASCII-capable</a>.</p>
           <li data-md="">
            <p>If <var>code</var> is not a valid key in the <var>layout</var>, then continue</p>
           <li data-md="">
@@ -1690,7 +1690,7 @@ to the <a data-link-type="dfn" href="http://www.w3.org/TR/uievents/#dead-key" id
       <td>U+00a8
    </table>
    <h3 class="heading settled" data-level="2.5" id="ascii-capable-layouts"><span class="secno">2.5. </span><span class="content">ASCII-Capable Keyboard Layouts</span><a class="self-link" href="#ascii-capable-layouts"></a></h3>
-   <p>An <dfn data-dfn-type="dfn" data-noexport="" id="ascii-capable">ASCII-capable<a class="self-link" href="#ascii-capable"></a></dfn> keyboard layout is one that:</p>
+   <p>An <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport="" id="ascii-capable">ASCII-capable</dfn> keyboard layout is one that:</p>
    <ul>
     <li data-md="">
      <p>Is capable of producing all of the basic ASCII characters "A" - "Z" without
@@ -1947,6 +1947,12 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
    <b><a href="#keyboard-getlayoutmap">#keyboard-getlayoutmap</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-keyboard-getlayoutmap">2.3.1. getLayoutMap()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="ascii-capable">
+   <b><a href="#ascii-capable">#ascii-capable</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-ascii-capable">2.3.1. getLayoutMap()</a> <a href="#ref-for-ascii-capable①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="common-writing-system-keys">

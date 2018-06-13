@@ -131,9 +131,9 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 				1. For each value |code| in the "KeyboardEvent code" column of the
 					[=Writing System Keys=] table
 
-					1. Let |layout| be the highest priority ASCII-capable keyboard layout,
+					1. Let |layout| be the highest priority [=ASCII-capable=] keyboard layout,
 						or the highest priority keyboard layout if none of the available
-						layouts are ASCII-capable.
+						layouts are [=ASCII-capable=].
 
 					1. If |code| is not a valid key in the |layout|, then continue
 				
