@@ -1179,7 +1179,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version eef4acd901f774f3d130c245844f8ea23319c1b2" name="generator">
   <link href="http://www.w3.org/TR/keyboard-map/" rel="canonical">
-  <meta content="6cfb6de5e55fe7d550c6c76977063d4397431c12" name="document-revision">
+  <meta content="d6eb056d200a49e67a21cc4e19b47cad3a493dc5" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1735,6 +1735,11 @@ highest priority ASCII-capable layout remains the same.</p>
    <p>Since this is a keyboard-focused API and mobile devices do not commonly
 	have physical keyboards, this API will not typically be present or
 	supported on mobile devices.</p>
+   <p>However, mobile devices may choose to support this API if they allow physical
+	keyboards to be connected. In this case, they may return a subset of the <a data-link-type="dfn" href="http://www.w3.org/TR/uievents-code/#writing-system-keys" id="ref-for-writing-system-keys①">Writing System Keys</a> that are appropriate for the platform.</p>
+   <p>Mobile platforms that require the user to configure their physical keyboard
+	layout (and don’t provide a reasonable default), may support this API by returning a
+	layout map that contains no entries.</p>
    <h2 class="heading settled" data-level="5" id="security"><span class="secno">5. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
    <p>This API returns static data and does not change any system state, so there are
 	no special security concerns.</p>

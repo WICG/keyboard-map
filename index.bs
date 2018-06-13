@@ -260,6 +260,14 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 	Since this is a keyboard-focused API and mobile devices do not commonly
 	have physical keyboards, this API will not typically be present or
 	supported on mobile devices.
+	
+	However, mobile devices may choose to support this API if they allow physical
+	keyboards to be connected. In this case, they may return a subset of the
+	[=Writing System Keys=] that are appropriate for the platform.
+	
+	Mobile platforms that require the user to configure their physical keyboard
+	layout (and don't provide a reasonable default), may support this API by returning a
+	layout map that contains no entries.
 
 <h2 id="security">Security Considerations</h2>
 
