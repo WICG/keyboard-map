@@ -301,11 +301,24 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 		actually be providing more identifying information for users in the UK than
 		the actual mapping would (since most users in the UK do not use a US layout).
 
+	<h3 id="incognito">Privacy Mode</h3>
+	
+	If a user agent provides an "incognito" or "privacy mode", then this API should
+	act the same as it does outside of "privacy mode". The reason for this is that
+	there is no universal neutral value that can be returned to ensure the user's
+	privacy.
+	
+	User agents may choose to give the user the option to specify what value should
+	be returned when in this mode, although care must be taken to ensure that the
+	user does not get a false sense of security since this value would need to be
+	updated when if they travel outside their home region.
+
 <h2 id="acknowledgements-contributors">Acknowledgements</h2>
 
 	Thanks to the following people for the discussions that lead
 	to the creation of this proposal:
 
+	Hadley Beeman (W3C TAG),
 	Joe Downing (Google),
 	Masayuki Nakano (Mozilla),
 	Julien Wajsberg (Mozilla)

@@ -1179,7 +1179,7 @@ Possible extra rowspan handling
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
   <meta content="Bikeshed version eef4acd901f774f3d130c245844f8ea23319c1b2" name="generator">
   <link href="http://www.w3.org/TR/keyboard-map/" rel="canonical">
-  <meta content="88c1ec200429ed5a2d405547e1e829f73935d711" name="document-revision">
+  <meta content="6cfb6de5e55fe7d550c6c76977063d4397431c12" name="document-revision">
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -1514,6 +1514,7 @@ set of buttons and need to describe those buttons to the user.</p>
      <a href="#privacy"><span class="secno">6</span> <span class="content">Privacy Considerations</span></a>
      <ol class="toc">
       <li><a href="#privacy-mitigations"><span class="secno">6.1</span> <span class="content">Privacy Mitigations</span></a>
+      <li><a href="#incognito"><span class="secno">6.2</span> <span class="content">Privacy Mode</span></a>
      </ol>
     <li><a href="#acknowledgements-contributors"><span class="secno">7</span> <span class="content">Acknowledgements</span></a>
     <li><a href="#glossary"><span class="secno">8</span> <span class="content">Glossary</span></a>
@@ -1769,10 +1770,20 @@ had a "privacy mode" that always returned a US-QWERTY layout mapping would
 actually be providing more identifying information for users in the UK than
 the actual mapping would (since most users in the UK do not use a US layout).</p>
    </ul>
+   <h3 class="heading settled" data-level="6.2" id="incognito"><span class="secno">6.2. </span><span class="content">Privacy Mode</span><a class="self-link" href="#incognito"></a></h3>
+   <p>If a user agent provides an "incognito" or "privacy mode", then this API should
+	act the same as it does outside of "privacy mode". The reason for this is that
+	there is no universal neutral value that can be returned to ensure the user’s
+	privacy.</p>
+   <p>User agents may choose to give the user the option to specify what value should
+	be returned when in this mode, although care must be taken to ensure that the
+	user does not get a false sense of security since this value would need to be
+	updated when if they travel outside their home region.</p>
    <h2 class="heading settled" data-level="7" id="acknowledgements-contributors"><span class="secno">7. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements-contributors"></a></h2>
    <p>Thanks to the following people for the discussions that lead
 	to the creation of this proposal:</p>
-   <p>Joe Downing (Google),
+   <p>Hadley Beeman (W3C TAG),
+	Joe Downing (Google),
 	Masayuki Nakano (Mozilla),
 	Julien Wajsberg (Mozilla)</p>
    <h2 class="heading settled" data-level="8" id="glossary"><span class="secno">8. </span><span class="content">Glossary</span><a class="self-link" href="#glossary"></a></h2>
