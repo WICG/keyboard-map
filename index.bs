@@ -87,7 +87,7 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 		specification. These two definitions will be reconciled once we decide on a final
 		home for these specifications.
 		
-	<h3 id="keyboard-map-interface">Keyboard Interface</h3>
+	<h3 id="keyboardlayoutmap-interface">KeyboardLayoutMap Interface</h3>
 
 		<pre class="idl" data-highlight="webidl">
 		interface KeyboardLayoutMap {
@@ -120,6 +120,10 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 
 			1. Let |p| be a new {{Promise}}.
 			
+			1. If not currently executing in the currently active [=top-level browsing context=], then
+		
+				1. Reject |p| with an "{{InvalidStateError}}" {{DOMException}}.
+
 			1. Run the following steps [=in parallel=]:
 			
 				1. Let |map| be a new {{KeyboardLayoutMap}} that is initially empty.
@@ -131,10 +135,6 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 						or the highest priority keyboard layout if none of the available
 						layouts are ASCII-capable.
 
-						Issue: Do we need the ability to select the highest-prio layout
-						regardless of whether or not it is ASCII-capable?
-						See <a href="https://github.com/wicg/keyboard-map/issues/1">Github Issue #1</a>
-
 					1. If |code| is not a valid key in the |layout|, then continue
 				
 					1. Let |key| be the {{KeyboardEvent/key}} value that would be generated
@@ -143,8 +143,9 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 
 					1. If |key| is a [=dead key=], then
 				
-						1. Set |key| to the string formed by a space " " followed by the
-							combining character that corresponds to the [=dead key=].
+						1. Set |key| to the standalone character that corresponds
+							to the [=dead key=], as defined in the
+							<a href="#table1">Standalone Equivalents for Dead Keys</a> table.
 						
 					1. Create a map entry |e| from the pair < |code|, |key| >
 				
@@ -174,13 +175,49 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 			On a "US International" keyboard where the single-quote (') key is a
 			[=dead key=] that adds an acute accent to the following character.
 			The keyboard map would contain an entry mapping [=Quote=] (the 
-			{{KeyboardEvent/code}} for this key) to the 2 character string
-			U+0020 U+0301 (which is a space followed by the Unicode Combining Acute Accent).
+			{{KeyboardEvent/code}} for this key) to "'" (the single-quote character U+0027).
 			</div>
 
 		</div><!-- getLayoutMap() -->
 
 		</div><!-- dfn-for Keyboard -->
+
+	<h3 id="dead-and-combining">Dead Keys and Combining Characters</h3>
+
+		Since the intent of the keyboard map API is to provide human-readable
+		descriptions for keys on the user's keyboard, [=dead keys=] or
+		combining characters need to be converted into standalone forms so that
+		they can be used directly.
+		
+		The following table defines how to map from common [=dead keys=] and
+		combining characters into standalone characters.
+		
+		<table>
+		<caption id="table1">Table 1: Standalone Equivalents for Dead Keys</caption>
+		<thead><tr><th>Dead Key<br/>Name</th><th>Unicode<br/>Combining</th><th>Standalone<br/>Character</th><th>Unicode<br/>Standalone</th></tr></thead>
+		<tbody>
+		<tr><td>Grave</td><td>U+0300</td><td>"`"</td><td>U+0060</td></tr>
+		<tr><td>Acute</td><td>U+0301</td><td>"'"</td><td>U+0027</td></tr>
+		<tr><td>Circumflex</td><td>U+0302</td><td>"^"</td><td>U+005e</td></tr>
+		<tr><td>Tilde</td><td>U+0303</td><td>"~"</td><td>U+007e</td></tr>
+		<tr><td>Diaeresis</td><td>U+0308</td><td>"¨"</td><td>U+00a8</td></tr>
+		</tbody>
+		</table>
+		
+	<h3 id="ascii-capable-layouts">ASCII-Capable Keyboard Layouts</h3>
+
+		
+		An <dfn>ASCII-capable</dfn> keyboard layout is one that:
+		
+		* Is capable of producing all of the basic ASCII characters "A" - "Z" without
+			requiring the use of any modifier keys.
+
+		* Produces a valid, printable character for all the [=common writing system keys=].
+
+		The <dfn>common writing system keys</dfn> are those that are common to all
+		keyboard layouts, as shown in blue in
+		<a href="https://www.w3.org/TR/uievents-code/#figure-keyboard-codes-alphanum1">Figure 13</a>
+		of the [[UIEvents-Code]] specification.
 
 <h2 id="keyboard-events">Keyboard Events</h2>
 
