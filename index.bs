@@ -298,8 +298,12 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 	
 	<h3 id="privacy-mitigations">Privacy Mitigations</h3>
 	
+	As a first line of defense for the user, this specification requires that the API
+	is only available from [=secure contexts=] and can only be called from the currently
+	active [=top-level browsing context=].
+
 	User agents that are concerned about the privacy impact of providing this
-	keyboard mapping information can consider the following:
+	keyboard mapping information can also consider the following mitigations:
 	
 	* Having a user prompt to ask for permission whenever a site attempts to use this API.
 	
