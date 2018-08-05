@@ -68,7 +68,8 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 	<h3 id="navigator-interface">Navigator Interface</h3>
 
 		<pre class="idl" data-highlight="webidl">
-		partial interface Navigator : EventTarget {
+		[Exposed=Window]
+		partial interface Navigator {
 			[SecureContext, SameObject] readonly attribute Keyboard keyboard;
 		};
 		</pre>
