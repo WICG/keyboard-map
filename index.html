@@ -6,7 +6,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2016/cg-draft" rel="stylesheet">
   <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://wicg.github.io/keyboard-map/" rel="canonical">
-  <meta content="e038cb593fc6fb88855cf05e410f162b7c2a8a0d" name="document-revision">
+  <meta content="513e18533d3d454ec0916418dbe4ded19006954f" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -634,7 +634,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1>Keyboard Map</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2019-09-13">13 September 2019</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2021-08-27">27 August 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -649,7 +649,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </dl>
    </div>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2019 the Contributors to the Keyboard Map Specification, published by the <a href="https://www.w3.org/community/wicg/">Web Platform Incubator Community Group</a> under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>.
+   <p class="copyright" data-fill-with="copyright"><a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 the Contributors to the Keyboard Map Specification, published by the <a href="https://www.w3.org/community/wicg/">Web Platform Incubator Community Group</a> under the <a href="https://www.w3.org/community/about/agreements/cla/">W3C Community Contributor License Agreement (CLA)</a>.
 A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available. </p>
    <hr title="Separator for header">
   </div>
@@ -702,16 +702,21 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
      <ol class="toc">
       <li><a href="#layoutchange-event"><span class="secno">3.1</span> <span class="content">The <span>layoutchange</span> Event</span></a>
      </ol>
-    <li><a href="#mobile"><span class="secno">4</span> <span class="content">Mobile Device Considerations</span></a>
-    <li><a href="#security"><span class="secno">5</span> <span class="content">Security Considerations</span></a>
     <li>
-     <a href="#privacy"><span class="secno">6</span> <span class="content">Privacy Considerations</span></a>
+     <a href="#integrations"><span class="secno">4</span> <span class="content">Integrations</span></a>
      <ol class="toc">
-      <li><a href="#privacy-mitigations"><span class="secno">6.1</span> <span class="content">Privacy Mitigations</span></a>
-      <li><a href="#incognito"><span class="secno">6.2</span> <span class="content">Privacy Mode</span></a>
+      <li><a href="#permissions-policy"><span class="secno">4.1</span> <span class="content">Permissions Policy</span></a>
      </ol>
-    <li><a href="#acknowledgements-contributors"><span class="secno">7</span> <span class="content">Acknowledgements</span></a>
-    <li><a href="#glossary"><span class="secno">8</span> <span class="content">Glossary</span></a>
+    <li><a href="#mobile"><span class="secno">5</span> <span class="content">Mobile Device Considerations</span></a>
+    <li><a href="#security"><span class="secno">6</span> <span class="content">Security Considerations</span></a>
+    <li>
+     <a href="#privacy"><span class="secno">7</span> <span class="content">Privacy Considerations</span></a>
+     <ol class="toc">
+      <li><a href="#privacy-mitigations"><span class="secno">7.1</span> <span class="content">Privacy Mitigations</span></a>
+      <li><a href="#incognito"><span class="secno">7.2</span> <span class="content">Privacy Mode</span></a>
+     </ol>
+    <li><a href="#acknowledgements-contributors"><span class="secno">8</span> <span class="content">Acknowledgements</span></a>
+    <li><a href="#glossary"><span class="secno">9</span> <span class="content">Glossary</span></a>
     <li>
      <a href="#w3c-conformance"><span class="secno"></span> <span class="content">Conformance</span></a>
      <ol class="toc">
@@ -1082,7 +1087,12 @@ highest priority ASCII-capable layout remains the same.</p>
 });
 </pre>
    </div>
-   <h2 class="heading settled" data-level="4" id="mobile"><span class="secno">4. </span><span class="content">Mobile Device Considerations</span><a class="self-link" href="#mobile"></a></h2>
+   <h2 class="heading settled" data-level="4" id="integrations"><span class="secno">4. </span><span class="content">Integrations</span><a class="self-link" href="#integrations"></a></h2>
+   <h3 class="heading settled" data-level="4.1" id="permissions-policy"><span class="secno">4.1. </span><span class="content">Permissions Policy</span><a class="self-link" href="#permissions-policy"></a></h3>
+   <p>This specification defines a feature that controls whether the <a data-link-type="dfn" href="#keyboard-getlayoutmap" id="ref-for-keyboard-getlayoutmap①">getLayoutMap()</a> method is exposed on the <code class="idl"><a data-link-type="idl" href="#keyboard" id="ref-for-keyboard②">Keyboard</a></code> interface.</p>
+   <p>The feature name for this feature is "keyboard-map".</p>
+   <p>The <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist" id="ref-for-default-allowlist">default allowlist</a> for this feature is "self".</p>
+   <h2 class="heading settled" data-level="5" id="mobile"><span class="secno">5. </span><span class="content">Mobile Device Considerations</span><a class="self-link" href="#mobile"></a></h2>
    <p>Since this is a keyboard-focused API and mobile devices do not commonly
 	have physical keyboards, this API will not typically be present or
 	supported on mobile devices.</p>
@@ -1091,10 +1101,10 @@ highest priority ASCII-capable layout remains the same.</p>
    <p>Mobile platforms that require the user to configure their physical keyboard
 	layout (and don’t provide a reasonable default), may support this API by returning a
 	layout map that contains no entries.</p>
-   <h2 class="heading settled" data-level="5" id="security"><span class="secno">5. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
+   <h2 class="heading settled" data-level="6" id="security"><span class="secno">6. </span><span class="content">Security Considerations</span><a class="self-link" href="#security"></a></h2>
    <p>This API returns static data and does not change any system state, so there are
 	no special security concerns.</p>
-   <h2 class="heading settled" data-level="6" id="privacy"><span class="secno">6. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h2>
+   <h2 class="heading settled" data-level="7" id="privacy"><span class="secno">7. </span><span class="content">Privacy Considerations</span><a class="self-link" href="#privacy"></a></h2>
    <p>As with all APIs that return information about the current device state, there is
 	a risk of using this API to create a larger "fingerprint" of the user than if this
 	API was not available.</p>
@@ -1113,7 +1123,7 @@ they are in. For example, a user in the US with an active UK or French layout.</
    <p>Without this API, similar fingerprinting can still be attempted, but it is more
 	difficult since it would require the user to interact with the page by typing
 	characters and analyze the resulting <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/uievents/#keyboardevent" id="ref-for-keyboardevent②">KeyboardEvent</a></code>s.</p>
-   <h3 class="heading settled" data-level="6.1" id="privacy-mitigations"><span class="secno">6.1. </span><span class="content">Privacy Mitigations</span><a class="self-link" href="#privacy-mitigations"></a></h3>
+   <h3 class="heading settled" data-level="7.1" id="privacy-mitigations"><span class="secno">7.1. </span><span class="content">Privacy Mitigations</span><a class="self-link" href="#privacy-mitigations"></a></h3>
    <p>As a first line of defense for the user, this specification requires that the API
 	is only available from <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#secure-context" id="ref-for-secure-context">secure contexts</a> and can only be called from the currently
 	active <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context" id="ref-for-top-level-browsing-context①">top-level browsing context</a>.</p>
@@ -1129,7 +1139,7 @@ had a "privacy mode" that always returned a US-QWERTY layout mapping would
 actually be providing more identifying information for users in the UK than
 the actual mapping would (since most users in the UK do not use a US layout).</p>
    </ul>
-   <h3 class="heading settled" data-level="6.2" id="incognito"><span class="secno">6.2. </span><span class="content">Privacy Mode</span><a class="self-link" href="#incognito"></a></h3>
+   <h3 class="heading settled" data-level="7.2" id="incognito"><span class="secno">7.2. </span><span class="content">Privacy Mode</span><a class="self-link" href="#incognito"></a></h3>
    <p>If a user agent provides an "incognito" or "privacy mode", then this API should
 	act the same as it does outside of "privacy mode". The reason for this is that
 	there is no universal neutral value that can be returned to ensure the user’s
@@ -1138,14 +1148,14 @@ the actual mapping would (since most users in the UK do not use a US layout).</p
 	be returned when in this mode, although care must be taken to ensure that the
 	user does not get a false sense of security since this value would need to be
 	updated when if they travel outside their home region.</p>
-   <h2 class="heading settled" data-level="7" id="acknowledgements-contributors"><span class="secno">7. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements-contributors"></a></h2>
+   <h2 class="heading settled" data-level="8" id="acknowledgements-contributors"><span class="secno">8. </span><span class="content">Acknowledgements</span><a class="self-link" href="#acknowledgements-contributors"></a></h2>
    <p>Thanks to the following people for the discussions that lead
 	to the creation of this proposal:</p>
    <p>Hadley Beeman (W3C TAG),
 	Joe Downing (Google),
 	Masayuki Nakano (Mozilla),
 	Julien Wajsberg (Mozilla)</p>
-   <h2 class="heading settled" data-level="8" id="glossary"><span class="secno">8. </span><span class="content">Glossary</span><a class="self-link" href="#glossary"></a></h2>
+   <h2 class="heading settled" data-level="9" id="glossary"><span class="secno">9. </span><span class="content">Glossary</span><a class="self-link" href="#glossary"></a></h2>
    <dl>
     <dt data-md><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="scancode">scancode</dfn>
     <dd data-md>
@@ -1216,7 +1226,7 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
     </ul>
    <li><a href="#keyboardlayoutmap">KeyboardLayoutMap</a><span>, in § 2.2</span>
    <li><a href="#layoutchange">layoutchange</a><span>, in § 3.1</span>
-   <li><a href="#scancode">scancode</a><span>, in § 8</span>
+   <li><a href="#scancode">scancode</a><span>, in § 9</span>
   </ul>
   <aside class="dfn-panel" data-for="term-for-navigator">
    <a href="https://html.spec.whatwg.org/multipage/system-state.html#navigator">https://html.spec.whatwg.org/multipage/system-state.html#navigator</a><b>Referenced in:</b>
@@ -1234,21 +1244,27 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   <aside class="dfn-panel" data-for="term-for-secure-context">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#secure-context">https://html.spec.whatwg.org/multipage/webappapis.html#secure-context</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-secure-context">6.1. Privacy Mitigations</a>
+    <li><a href="#ref-for-secure-context">7.1. Privacy Mitigations</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-top-level-browsing-context">
    <a href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context">https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-top-level-browsing-context">2.3.1. getLayoutMap()</a>
-    <li><a href="#ref-for-top-level-browsing-context①">6.1. Privacy Mitigations</a>
+    <li><a href="#ref-for-top-level-browsing-context①">7.1. Privacy Mitigations</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-default-allowlist">
+   <a href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist">https://w3c.github.io/webappsec-permissions-policy/#default-allowlist</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-default-allowlist">4.1. Permissions Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-keyboardevent">
    <a href="https://www.w3.org/TR/uievents/#keyboardevent">https://www.w3.org/TR/uievents/#keyboardevent</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-keyboardevent">1. Introduction</a> <a href="#ref-for-keyboardevent①">(2)</a>
-    <li><a href="#ref-for-keyboardevent②">6. Privacy Considerations</a>
+    <li><a href="#ref-for-keyboardevent②">7. Privacy Considerations</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dom-keyboardevent-code">
@@ -1286,7 +1302,7 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
    <a href="http://www.w3.org/TR/uievents-code/#writing-system-keys">http://www.w3.org/TR/uievents-code/#writing-system-keys</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-writing-system-keys">2.3.1. getLayoutMap()</a>
-    <li><a href="#ref-for-writing-system-keys①">4. Mobile Device Considerations</a>
+    <li><a href="#ref-for-writing-system-keys①">5. Mobile Device Considerations</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-key-attribute-value">
@@ -1352,6 +1368,11 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
      <li><span class="dfn-paneled" id="term-for-top-level-browsing-context">top-level browsing context</span>
     </ul>
    <li>
+    <a data-link-type="biblio">[permissions-policy-1]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-default-allowlist">default allowlist</span>
+    </ul>
+   <li>
     <a data-link-type="biblio">[uievents]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-keyboardevent">KeyboardEvent</span>
@@ -1387,6 +1408,8 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   <dl>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+   <dt id="biblio-permissions-policy-1">[PERMISSIONS-POLICY-1]
+   <dd>Ian Clelland. <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. 16 July 2020. WD. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
    <dt id="biblio-uievents">[UIEVENTS]
@@ -1435,12 +1458,14 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
    <ul>
     <li><a href="#ref-for-keyboard">2.1. Navigator Interface</a>
     <li><a href="#ref-for-keyboard①">2.1.1. keyboard</a>
+    <li><a href="#ref-for-keyboard②">4.1. Permissions Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="keyboard-getlayoutmap">
    <b><a href="#keyboard-getlayoutmap">#keyboard-getlayoutmap</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-keyboard-getlayoutmap">2.3.1. getLayoutMap()</a>
+    <li><a href="#ref-for-keyboard-getlayoutmap①">4.1. Permissions Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="ascii-capable">

@@ -256,6 +256,17 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 		</pre>
 		</div>
 	
+<h2 id="integrations">Integrations</h2>
+
+	<h3 id="permissions-policy">Permissions Policy</h3>
+	
+		This specification defines a feature that controls whether the
+		[=getLayoutMap()=] method is exposed on the {{Keyboard}} interface.
+		
+		The feature name for this feature is "keyboard-map".
+		
+		The [=default allowlist=] for this feature is "self".
+
 <h2 id="mobile">Mobile Device Considerations</h2>
 
 	Since this is a keyboard-focused API and mobile devices do not commonly
