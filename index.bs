@@ -121,9 +121,12 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 
 			1. Let |p| be a new {{Promise}}.
 			
-			1. If not currently executing in the currently active [=top-level browsing context=], then
-		
-				1. Reject |p| with an "{{InvalidStateError}}" {{DOMException}}.
+			1. If [=this=]'s [=relevant global object=]'s [=associated Document=] is not [=allowed to use=] the [=policy-controlled feature=] named "keyboard-map"
+			
+				1. [=Reject=] |p| with a "{{SecurityError}}" {{DOMException}}.
+
+				1. Return |p|
+
 
 			1. Run the following steps [=in parallel=]:
 			

@@ -6,7 +6,7 @@
   <link href="https://www.w3.org/StyleSheets/TR/2016/cg-draft" rel="stylesheet">
   <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
   <link href="https://wicg.github.io/keyboard-map/" rel="canonical">
-  <meta content="513e18533d3d454ec0916418dbe4ded19006954f" name="document-revision">
+  <meta content="78cfc488458175bf0ac48c2af3737ad6f3e47647" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -634,7 +634,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1>Keyboard Map</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2021-08-27">27 August 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2021-09-14">14 September 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -948,10 +948,12 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
       <li data-md>
        <p>Let <var>p</var> be a new <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-promise" id="ref-for-idl-promise①">Promise</a></code>.</p>
       <li data-md>
-       <p>If not currently executing in the currently active <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context" id="ref-for-top-level-browsing-context">top-level browsing context</a>, then</p>
+       <p>If <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this">this</a>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global" id="ref-for-concept-relevant-global">relevant global object</a>'s <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/window-object.html#concept-document-window" id="ref-for-concept-document-window">associated Document</a> is not <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use" id="ref-for-allowed-to-use">allowed to use</a> the <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature" id="ref-for-policy-controlled-feature">policy-controlled feature</a> named "keyboard-map"</p>
        <ol>
         <li data-md>
-         <p>Reject <var>p</var> with an "<code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code>" <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException">DOMException</a></code>.</p>
+         <p><a data-link-type="dfn" href="https://heycam.github.io/webidl/#reject" id="ref-for-reject">Reject</a> <var>p</var> with a "<code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#securityerror" id="ref-for-securityerror">SecurityError</a></code>" <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#idl-DOMException" id="ref-for-idl-DOMException">DOMException</a></code>.</p>
+        <li data-md>
+         <p>Return <var>p</var></p>
        </ol>
       <li data-md>
        <p>Run the following steps <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel" id="ref-for-in-parallel">in parallel</a>:</p>
@@ -1126,7 +1128,7 @@ they are in. For example, a user in the US with an active UK or French layout.</
    <h3 class="heading settled" data-level="7.1" id="privacy-mitigations"><span class="secno">7.1. </span><span class="content">Privacy Mitigations</span><a class="self-link" href="#privacy-mitigations"></a></h3>
    <p>As a first line of defense for the user, this specification requires that the API
 	is only available from <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#secure-context" id="ref-for-secure-context">secure contexts</a> and can only be called from the currently
-	active <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context" id="ref-for-top-level-browsing-context①">top-level browsing context</a>.</p>
+	active <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context" id="ref-for-top-level-browsing-context">top-level browsing context</a>.</p>
    <p>User agents that are concerned about the privacy impact of providing this
 	keyboard mapping information can also consider the following mitigations:</p>
    <ul>
@@ -1235,10 +1237,28 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
     <li><a href="#ref-for-navigator①">2.1.1. keyboard</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-allowed-to-use">
+   <a href="https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use">https://html.spec.whatwg.org/multipage/iframe-embed-object.html#allowed-to-use</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-allowed-to-use">2.3.1. getLayoutMap()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-concept-document-window">
+   <a href="https://html.spec.whatwg.org/multipage/window-object.html#concept-document-window">https://html.spec.whatwg.org/multipage/window-object.html#concept-document-window</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-concept-document-window">2.3.1. getLayoutMap()</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-in-parallel">
    <a href="https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel">https://html.spec.whatwg.org/multipage/infrastructure.html#in-parallel</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-in-parallel">2.3.1. getLayoutMap()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-concept-relevant-global">
+   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global">https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-global</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-concept-relevant-global">2.3.1. getLayoutMap()</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-secure-context">
@@ -1250,14 +1270,19 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   <aside class="dfn-panel" data-for="term-for-top-level-browsing-context">
    <a href="https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context">https://html.spec.whatwg.org/multipage/browsers.html#top-level-browsing-context</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-top-level-browsing-context">2.3.1. getLayoutMap()</a>
-    <li><a href="#ref-for-top-level-browsing-context①">7.1. Privacy Mitigations</a>
+    <li><a href="#ref-for-top-level-browsing-context">7.1. Privacy Mitigations</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-default-allowlist">
    <a href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist">https://w3c.github.io/webappsec-permissions-policy/#default-allowlist</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-default-allowlist">4.1. Permissions Policy</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-policy-controlled-feature">
+   <a href="https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature">https://w3c.github.io/webappsec-permissions-policy/#policy-controlled-feature</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-policy-controlled-feature">2.3.1. getLayoutMap()</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-keyboardevent">
@@ -1331,12 +1356,6 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
     <li><a href="#ref-for-Exposed②">2.3. Keyboard Interface</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-invalidstateerror">
-   <a href="https://heycam.github.io/webidl/#invalidstateerror">https://heycam.github.io/webidl/#invalidstateerror</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-invalidstateerror">2.3.1. getLayoutMap()</a>
-   </ul>
-  </aside>
   <aside class="dfn-panel" data-for="term-for-idl-promise">
    <a href="https://heycam.github.io/webidl/#idl-promise">https://heycam.github.io/webidl/#idl-promise</a><b>Referenced in:</b>
    <ul>
@@ -1357,13 +1376,34 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
     <li><a href="#ref-for-SecureContext①">2.3. Keyboard Interface</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-securityerror">
+   <a href="https://heycam.github.io/webidl/#securityerror">https://heycam.github.io/webidl/#securityerror</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-securityerror">2.3.1. getLayoutMap()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-reject">
+   <a href="https://heycam.github.io/webidl/#reject">https://heycam.github.io/webidl/#reject</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-reject">2.3.1. getLayoutMap()</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-this">
+   <a href="https://heycam.github.io/webidl/#this">https://heycam.github.io/webidl/#this</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-this">2.3.1. getLayoutMap()</a>
+   </ul>
+  </aside>
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-navigator">Navigator</span>
+     <li><span class="dfn-paneled" id="term-for-allowed-to-use">allowed to use</span>
+     <li><span class="dfn-paneled" id="term-for-concept-document-window">associated document</span>
      <li><span class="dfn-paneled" id="term-for-in-parallel">in parallel</span>
+     <li><span class="dfn-paneled" id="term-for-concept-relevant-global">relevant global object</span>
      <li><span class="dfn-paneled" id="term-for-secure-context">secure context</span>
      <li><span class="dfn-paneled" id="term-for-top-level-browsing-context">top-level browsing context</span>
     </ul>
@@ -1371,6 +1411,7 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
     <a data-link-type="biblio">[permissions-policy-1]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-default-allowlist">default allowlist</span>
+     <li><span class="dfn-paneled" id="term-for-policy-controlled-feature">policy-controlled feature</span>
     </ul>
    <li>
     <a data-link-type="biblio">[uievents]</a> defines the following terms:
@@ -1397,10 +1438,12 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
      <li><span class="dfn-paneled" id="term-for-idl-DOMException">DOMException</span>
      <li><span class="dfn-paneled" id="term-for-idl-DOMString">DOMString</span>
      <li><span class="dfn-paneled" id="term-for-Exposed">Exposed</span>
-     <li><span class="dfn-paneled" id="term-for-invalidstateerror">InvalidStateError</span>
      <li><span class="dfn-paneled" id="term-for-idl-promise">Promise</span>
      <li><span class="dfn-paneled" id="term-for-SameObject">SameObject</span>
      <li><span class="dfn-paneled" id="term-for-SecureContext">SecureContext</span>
+     <li><span class="dfn-paneled" id="term-for-securityerror">SecurityError</span>
+     <li><span class="dfn-paneled" id="term-for-reject">reject</span>
+     <li><span class="dfn-paneled" id="term-for-this">this</span>
     </ul>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
