@@ -36,6 +36,12 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 	text: Quote
 </pre>
 
+<pre class="link-defaults">
+spec:dom; type:attribute; for:Event; text:bubbles
+spec:dom; type:attribute; for:Event; text:cancelable
+spec:dom; type:attribute; for:Event; text:type
+</pre>
+
 <h2 id="introduction">Introduction</h2>
 
 	On a {{KeyboardEvent}}, the {{KeyboardEvent/code}} attribute encodes
@@ -73,6 +79,8 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 		};
 		</pre>
 
+		The {{Keyboard}} interface is defined in the [[!Keyboard-Lock]] specification.
+
 		<div id="navigator-idl" dfn-for="Navigator">
 
 		<div class="algorithm" data-algorithm="navigator-keyboard">
@@ -106,8 +114,10 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 	<h3 id="keyboard-interface">Keyboard Interface</h3>
 
 		<pre class="idl" data-highlight="webidl">
-		[SecureContext, Exposed=Window] interface Keyboard {
+		interface Keyboard : EventTarget {
 			Promise&lt;KeyboardLayoutMap> getLayoutMap();
+
+			attribute EventHandler onlayoutchange;
 		};
 		</pre>
 
@@ -126,7 +136,6 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 				1. [=Reject=] |p| with a "{{SecurityError}}" {{DOMException}}.
 
 				1. Return |p|
-
 
 			1. Run the following steps [=in parallel=]:
 			
@@ -227,26 +236,27 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 
 	<h3 id="layoutchange-event">The <dfn>layoutchange</dfn> Event</h2>
 	
-		The [=layoutchange=] event fires on the [=keyboard=] object whenever the
-		current keyboard layout is changed. A layout change can occur when the user
-		selects a new layout, or it may happen automatically when the user performs an
-		action (e.g., switching to an application that has a preferred layout).
+		When the user agent detects that the current keyboard layout has changed, then
+		it MUST [=fire a layoutchange event=]. The exact timing of a layout change depends
+		on the underlying platform but it is commonly triggered either directly by a user
+		action (for example, when the user selects a new layout), or indirectly
+		(such as when switching to an application that has a preferred layout).
 		
 		Note the following:
 		
-		* Modifying the set of available layouts does not trigger a [=layoutchange=]
+		* Modifying the set of available layouts should not trigger a [=layoutchange=]
 			event, unless the modification changes the current layout.
 		
-		* Adding or removing a physical keyboard does not trigger an event unless
+		* Adding or removing a physical keyboard should not trigger an event unless
 			the system has functionality to change the current layout based on adding or 
 			removing a physical keyboard. But note that it is the layout change that
 			triggers this event, not the act of adding or removing the physical keyboard.
 		
-		* The event will be fired whenever the current layout changes, even if the
+		* The event must be fired whenever the current layout changes, even if the
 			highest priority ASCII-capable layout remains the same.
 
 		If the keyboard layout changes while the user agent is not the foreground
-		application, then the [=layoutchange=] event MUST fire when the user agent
+		application, then the user agent MUST [=fire a layoutchange event=] when it
 		regains focus.
 
 		<div class="example">
@@ -258,6 +268,22 @@ urlPrefix: http://www.w3.org/TR/uievents-code/#code-; type: dfn; spec: uievents-
 			});
 		</pre>
 		</div>
+
+	<div class="algorithm" data-algorithm="fire-a-layoutchange-event">
+	<h4 id="h-fire-a-layoutchange-event"><dfn>fire a layoutchange event</dfn></h4>
+
+	To fire a "layoutchange" event, perform the following steps:
+
+		1. Let |event| = the result of
+			<a href="https://dom.spec.whatwg.org/#concept-event-create">creating</a> a new {{Event}}
+
+		1. <a href="https://dom.spec.whatwg.org/#concept-event-initialize">Initialize</a> |event| with {{type}} = "layoutchange", {{bubbles}} to false, and {{cancelable}} to false
+
+		1. Let |target| = the {{keyboard}} attribute on the user agent's {{Navigator}} object.
+
+		1. [=Dispatch=] |event| at |target|
+
+	</div>
 	
 <h2 id="integrations">Integrations</h2>
 

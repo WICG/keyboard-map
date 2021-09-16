@@ -4,9 +4,9 @@
   <title>Keyboard Map</title>
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <link href="https://www.w3.org/StyleSheets/TR/2016/cg-draft" rel="stylesheet">
-  <meta content="Bikeshed version 4f053d00e, updated Tue Aug 10 14:13:32 2021 -0700" name="generator">
+  <meta content="Bikeshed version e8cbf4ed2, updated Fri Sep 10 10:21:28 2021 -0700" name="generator">
   <link href="https://wicg.github.io/keyboard-map/" rel="canonical">
-  <meta content="78cfc488458175bf0ac48c2af3737ad6f3e47647" name="document-revision">
+  <meta content="9237b2630b9cf408f6a8e7c938bd1f334f78079f" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -634,7 +634,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1>Keyboard Map</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2021-09-14">14 September 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Draft Community Group Report, <time class="dt-updated" datetime="2021-09-15">15 September 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -700,7 +700,11 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
     <li>
      <a href="#keyboard-events"><span class="secno">3</span> <span class="content">Keyboard Events</span></a>
      <ol class="toc">
-      <li><a href="#layoutchange-event"><span class="secno">3.1</span> <span class="content">The <span>layoutchange</span> Event</span></a>
+      <li>
+       <a href="#layoutchange-event"><span class="secno">3.1</span> <span class="content">The <span>layoutchange</span> Event</span></a>
+       <ol class="toc">
+        <li><a href="#h-fire-a-layoutchange-event"><span class="secno">3.1.1</span> <span class="content"><span>fire a layoutchange event</span></span></a>
+       </ol>
      </ol>
     <li>
      <a href="#integrations"><span class="secno">4</span> <span class="content">Integrations</span></a>
@@ -757,31 +761,33 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
    <p>The API described in this document provides a simple way of obtaining this basic <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/uievents/#dom-keyboardevent-code" id="ref-for-dom-keyboardevent-code④">code</a></code> to <code class="idl"><a data-link-type="idl" href="https://www.w3.org/TR/uievents/#dom-keyboardevent-key" id="ref-for-dom-keyboardevent-key⑤">key</a></code> mapping.</p>
    <h2 class="heading settled" data-level="2" id="API"><span class="secno">2. </span><span class="content">Keyboard Map API</span><a class="self-link" href="#API"></a></h2>
    <h3 class="heading settled" data-level="2.1" id="navigator-interface"><span class="secno">2.1. </span><span class="content">Navigator Interface</span><a class="self-link" href="#navigator-interface"></a></h3>
-   <div class="mdn-anno wrapped after">
-    <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/keyboard" title="The keyboard read-only property of the Navigator interface returns a Keyboard object which provides access to functions that retrieve keyboard layout maps and toggle capturing of key presses from the physical keyboard.">Navigator/keyboard</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>68+</span></span>
-      <hr>
-      <span class="opera yes"><span>Opera</span><span>55+</span></span><span class="edge_blink yes"><span>Edge</span><span>79+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>None</span></span><span class="safari_ios no"><span>iOS Safari</span><span>None</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>None</span></span><span class="webview_android yes"><span>Android WebView</span><span>68+</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>None</span></span><span class="opera_android no"><span>Opera Mobile</span><span>None</span></span>
-     </div>
-    </div>
-   </div>
 <pre class="idl highlight def" data-highlight="webidl">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator" id="ref-for-navigator"><c- g>Navigator</c-></a> {
-  [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#keyboard" id="ref-for-keyboard"><c- n>Keyboard</c-></a> <dfn class="idl-code" data-dfn-for="Navigator" data-dfn-type="attribute" data-export data-readonly data-type="Keyboard" id="dom-navigator-keyboard"><code><c- g>keyboard</c-></code><a class="self-link" href="#dom-navigator-keyboard"></a></dfn>;
+  [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#keyboard" id="ref-for-keyboard"><c- n>Keyboard</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="Navigator" data-dfn-type="attribute" data-export data-readonly data-type="Keyboard" id="dom-navigator-keyboard"><code><c- g>keyboard</c-></code></dfn>;
 };
 </pre>
+   <p>The <code class="idl"><a data-link-type="idl" href="#keyboard" id="ref-for-keyboard①">Keyboard</a></code> interface is defined in the <a data-link-type="biblio" href="#biblio-keyboard-lock">[Keyboard-Lock]</a> specification.</p>
    <div id="navigator-idl">
     <div class="algorithm" data-algorithm="navigator-keyboard">
      <h4 class="heading settled" data-level="2.1.1" id="h-navigator-keyboard"><span class="secno">2.1.1. </span><span class="content"><dfn class="dfn-paneled" data-dfn-for="Navigator" data-dfn-type="dfn" data-noexport id="navigator-keyboard">keyboard</dfn></span><a class="self-link" href="#h-navigator-keyboard"></a></h4>
-      The <a data-link-type="dfn" href="#navigator-keyboard" id="ref-for-navigator-keyboard">keyboard</a> attribute must return the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator" id="ref-for-navigator①">Navigator</a></code>'s <code class="idl"><a data-link-type="idl" href="#keyboard" id="ref-for-keyboard①">Keyboard</a></code> object. 
+      The 
+     <div class="mdn-anno wrapped after">
+      <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
+      <div class="feature">
+       <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/keyboard" title="The keyboard read-only property of the Navigator interface returns a Keyboard object which provides access to functions that retrieve keyboard layout maps and toggle capturing of key presses from the physical keyboard.">Navigator/keyboard</a></p>
+       <p class="less-than-two-engines-text">In only one current engine.</p>
+       <div class="support">
+        <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>68+</span></span>
+        <hr>
+        <span class="opera yes"><span>Opera</span><span>55+</span></span><span class="edge_blink yes"><span>Edge</span><span>79+</span></span>
+        <hr>
+        <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+        <hr>
+        <span class="firefox_android no"><span>Firefox for Android</span><span>None</span></span><span class="safari_ios no"><span>iOS Safari</span><span>None</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>None</span></span><span class="webview_android yes"><span>Android WebView</span><span>68+</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>None</span></span><span class="opera_android no"><span>Opera Mobile</span><span>None</span></span>
+       </div>
+      </div>
+     </div>
+     <a data-link-type="dfn" href="#navigator-keyboard" id="ref-for-navigator-keyboard">keyboard</a> attribute must return the <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator" id="ref-for-navigator①">Navigator</a></code>'s <code class="idl"><a data-link-type="idl" href="#keyboard" id="ref-for-keyboard②">Keyboard</a></code> object. 
     </div>
    </div>
    <p class="note" role="note"><span>Note:</span> The <a data-link-type="dfn" href="#navigator-keyboard" id="ref-for-navigator-keyboard①">keyboard</a> object is also defined in the <a href="https://w3c.github.io/keyboard-lock/#navigator-interface">Keyboard Lock</a> specification. These two definitions will be reconciled once we decide on a final
@@ -790,85 +796,7 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
    <div class="mdn-anno wrapped after">
     <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
     <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardLayoutMap/entries" title="The entries read-only property of the KeyboardLayoutMap interface returns an array of a given object&apos;s own enumerable property [key, value] pairs, in the same order as that provided by a for...in loop (the difference being that a for-in loop enumerates properties in the prototype chain as well). ">KeyboardLayoutMap/entries</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>69+</span></span>
-      <hr>
-      <span class="opera yes"><span>Opera</span><span>56+</span></span><span class="edge_blink yes"><span>Edge</span><span>79+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>None</span></span><span class="safari_ios no"><span>iOS Safari</span><span>None</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>None</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>None</span></span><span class="opera_android yes"><span>Opera Mobile</span><span>48+</span></span>
-     </div>
-    </div>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardLayoutMap/forEach" title="The forEach() method of the KeyboardLayoutMap interface executes a provided function once for each element of the map.">KeyboardLayoutMap/forEach</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>69+</span></span>
-      <hr>
-      <span class="opera yes"><span>Opera</span><span>56+</span></span><span class="edge_blink yes"><span>Edge</span><span>79+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>None</span></span><span class="safari_ios no"><span>iOS Safari</span><span>None</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>None</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>None</span></span><span class="opera_android yes"><span>Opera Mobile</span><span>48+</span></span>
-     </div>
-    </div>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardLayoutMap/get" title="The get() method of the KeyboardLayoutMap interface returns the element with the given key. ">KeyboardLayoutMap/get</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>69+</span></span>
-      <hr>
-      <span class="opera yes"><span>Opera</span><span>56+</span></span><span class="edge_blink yes"><span>Edge</span><span>79+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>None</span></span><span class="safari_ios no"><span>iOS Safari</span><span>None</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>None</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>None</span></span><span class="opera_android yes"><span>Opera Mobile</span><span>48+</span></span>
-     </div>
-    </div>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardLayoutMap/keys" title="The keys read-only property of the KeyboardLayoutMap interface returns a new object that contains the keys for each index in the array. ">KeyboardLayoutMap/keys</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>69+</span></span>
-      <hr>
-      <span class="opera yes"><span>Opera</span><span>56+</span></span><span class="edge_blink yes"><span>Edge</span><span>79+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>None</span></span><span class="safari_ios no"><span>iOS Safari</span><span>None</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>None</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>None</span></span><span class="opera_android yes"><span>Opera Mobile</span><span>48+</span></span>
-     </div>
-    </div>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardLayoutMap/size" title="The size read-only property of the KeyboardLayoutMap interface returns the number of elements in the map. ">KeyboardLayoutMap/size</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>69+</span></span>
-      <hr>
-      <span class="opera yes"><span>Opera</span><span>56+</span></span><span class="edge_blink yes"><span>Edge</span><span>79+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>None</span></span><span class="safari_ios no"><span>iOS Safari</span><span>None</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>None</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>None</span></span><span class="opera_android no"><span>Opera Mobile</span><span>None</span></span>
-     </div>
-    </div>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardLayoutMap/values" title="The values read-only property of the KeyboardLayoutMap interface returns a new object that contains the values for each index in the . ">KeyboardLayoutMap/values</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>69+</span></span>
-      <hr>
-      <span class="opera yes"><span>Opera</span><span>56+</span></span><span class="edge_blink yes"><span>Edge</span><span>79+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>None</span></span><span class="safari_ios no"><span>iOS Safari</span><span>None</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>None</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>None</span></span><span class="opera_android yes"><span>Opera Mobile</span><span>48+</span></span>
-     </div>
-    </div>
-    <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardLayoutMap" title="The KeyboardLayoutMap interface of the Keyboard API is a map-like object with functions for retrieving the string associated with specific physical keys. ">KeyboardLayoutMap</a></p>
+     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardLayoutMap" title="The KeyboardLayoutMap interface of the Keyboard API is a map-like object with functions for retrieving the string associated with specific physical keys.">KeyboardLayoutMap</a></p>
      <p class="less-than-two-engines-text">In only one current engine.</p>
      <div class="support">
       <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>69+</span></span>
@@ -893,19 +821,6 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
    <div class="mdn-anno wrapped after">
     <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
     <div class="feature">
-     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/unlock" title="The unlock() method of the Keyboard interface unlocks all keys captured by the Keyboard.lock() method and returns synchronously. ">Keyboard/unlock</a></p>
-     <p class="less-than-two-engines-text">In only one current engine.</p>
-     <div class="support">
-      <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>68+</span></span>
-      <hr>
-      <span class="opera yes"><span>Opera</span><span>55+</span></span><span class="edge_blink yes"><span>Edge</span><span>79+</span></span>
-      <hr>
-      <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
-      <hr>
-      <span class="firefox_android no"><span>Firefox for Android</span><span>None</span></span><span class="safari_ios no"><span>iOS Safari</span><span>None</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>None</span></span><span class="webview_android no"><span>Android WebView</span><span>None</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>None</span></span><span class="opera_android no"><span>Opera Mobile</span><span>None</span></span>
-     </div>
-    </div>
-    <div class="feature">
      <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Keyboard" title="The Keyboard interface of the Keyboard API provides functions that retrieve keyboard layout maps and toggle capturing of key presses from the physical keyboard.">Keyboard</a></p>
      <p class="less-than-two-engines-text">In only one current engine.</p>
      <div class="support">
@@ -919,8 +834,10 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
      </div>
     </div>
    </div>
-<pre class="idl highlight def" data-highlight="webidl">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext" id="ref-for-SecureContext①"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed②"><c- g>Exposed</c-></a>=<c- n>Window</c->] <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="keyboard"><code><c- g>Keyboard</c-></code></dfn> {
+<pre class="idl highlight def" data-highlight="webidl"><c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="keyboard"><code><c- g>Keyboard</c-></code></dfn> : <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget" id="ref-for-eventtarget"><c- n>EventTarget</c-></a> {
   <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-promise" id="ref-for-idl-promise"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#keyboardlayoutmap" id="ref-for-keyboardlayoutmap①"><c- n>KeyboardLayoutMap</c-></a>> <dfn class="idl-code" data-dfn-for="Keyboard" data-dfn-type="method" data-export data-lt="getLayoutMap()" id="dom-keyboard-getlayoutmap"><code><c- g>getLayoutMap</c-></code><a class="self-link" href="#dom-keyboard-getlayoutmap"></a></dfn>();
+
+  <c- b>attribute</c-> <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler" id="ref-for-eventhandler"><c- n>EventHandler</c-></a> <dfn class="idl-code" data-dfn-for="Keyboard" data-dfn-type="attribute" data-export data-type="EventHandler" id="dom-keyboard-onlayoutchange"><code><c- g>onlayoutchange</c-></code><a class="self-link" href="#dom-keyboard-onlayoutchange"></a></dfn>;
 };
 </pre>
    <div id="keyboard-idl">
@@ -929,7 +846,7 @@ A human-readable <a href="http://www.w3.org/community/about/agreements/cla-deed/
      <div class="mdn-anno wrapped after">
       <button class="mdn-anno-btn"><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></button>
       <div class="feature">
-       <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/getLayoutMap" title="The getLayoutMap() method of the Keyboard interface returns a Promise that resolves with an instance of KeyboardLayoutMap which is a map-like object with functions for retrieving the strings associated with specific physical keys. ">Keyboard/getLayoutMap</a></p>
+       <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Keyboard/getLayoutMap" title="The getLayoutMap() method of the Keyboard interface returns a Promise that resolves with an instance of KeyboardLayoutMap which is a map-like object with functions for retrieving the strings associated with specific physical keys.">Keyboard/getLayoutMap</a></p>
        <p class="less-than-two-engines-text">In only one current engine.</p>
        <div class="support">
         <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome yes"><span>Chrome</span><span>69+</span></span>
@@ -1061,25 +978,26 @@ requiring the use of any modifier keys.</p>
 		keyboard layouts, as shown in blue in <a href="https://www.w3.org/TR/uievents-code/#figure-keyboard-codes-alphanum1">Figure 13</a> of the <a data-link-type="biblio" href="#biblio-uievents-code">[UIEvents-Code]</a> specification.</p>
    <h2 class="heading settled" data-level="3" id="keyboard-events"><span class="secno">3. </span><span class="content">Keyboard Events</span><a class="self-link" href="#keyboard-events"></a></h2>
    <h3 class="heading settled" data-level="3.1" id="layoutchange-event"><span class="secno">3.1. </span><span class="content">The <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="layoutchange">layoutchange</dfn> Event</span><a class="self-link" href="#layoutchange-event"></a></h3>
-   <p>The <a data-link-type="dfn" href="#layoutchange" id="ref-for-layoutchange">layoutchange</a> event fires on the <a data-link-type="dfn" href="#navigator-keyboard" id="ref-for-navigator-keyboard②">keyboard</a> object whenever the
-		current keyboard layout is changed. A layout change can occur when the user
-		selects a new layout, or it may happen automatically when the user performs an
-		action (e.g., switching to an application that has a preferred layout).</p>
+   <p>When the user agent detects that the current keyboard layout has changed, then
+		it MUST <a data-link-type="dfn" href="#fire-a-layoutchange-event" id="ref-for-fire-a-layoutchange-event">fire a layoutchange event</a>. The exact timing of a layout change depends
+		on the underlying platform but it is commonly triggered either directly by a user
+		action (for example, when the user selects a new layout), or indirectly
+		(such as when switching to an application that has a preferred layout).</p>
    <p>Note the following:</p>
    <ul>
     <li data-md>
-     <p>Modifying the set of available layouts does not trigger a <a data-link-type="dfn" href="#layoutchange" id="ref-for-layoutchange①">layoutchange</a> event, unless the modification changes the current layout.</p>
+     <p>Modifying the set of available layouts should not trigger a <a data-link-type="dfn" href="#layoutchange" id="ref-for-layoutchange">layoutchange</a> event, unless the modification changes the current layout.</p>
     <li data-md>
-     <p>Adding or removing a physical keyboard does not trigger an event unless
+     <p>Adding or removing a physical keyboard should not trigger an event unless
 the system has functionality to change the current layout based on adding or 
 removing a physical keyboard. But note that it is the layout change that
 triggers this event, not the act of adding or removing the physical keyboard.</p>
     <li data-md>
-     <p>The event will be fired whenever the current layout changes, even if the
+     <p>The event must be fired whenever the current layout changes, even if the
 highest priority ASCII-capable layout remains the same.</p>
    </ul>
    <p>If the keyboard layout changes while the user agent is not the foreground
-		application, then the <a data-link-type="dfn" href="#layoutchange" id="ref-for-layoutchange②">layoutchange</a> event MUST fire when the user agent
+		application, then the user agent MUST <a data-link-type="dfn" href="#fire-a-layoutchange-event" id="ref-for-fire-a-layoutchange-event①">fire a layoutchange event</a> when it
 		regains focus.</p>
    <div class="example" id="example-659c10ea">
     <a class="self-link" href="#example-659c10ea"></a> To handle this event: 
@@ -1089,9 +1007,23 @@ highest priority ASCII-capable layout remains the same.</p>
 });
 </pre>
    </div>
+   <div class="algorithm" data-algorithm="fire-a-layoutchange-event">
+    <h4 class="heading settled" data-level="3.1.1" id="h-fire-a-layoutchange-event"><span class="secno">3.1.1. </span><span class="content"><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fire-a-layoutchange-event">fire a layoutchange event</dfn></span><a class="self-link" href="#h-fire-a-layoutchange-event"></a></h4>
+    <p>To fire a "layoutchange" event, perform the following steps:</p>
+    <ol>
+     <li data-md>
+      <p>Let <var>event</var> = the result of <a href="https://dom.spec.whatwg.org/#concept-event-create">creating</a> a new <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#event" id="ref-for-event">Event</a></code></p>
+     <li data-md>
+      <p><a href="https://dom.spec.whatwg.org/#concept-event-initialize">Initialize</a> <var>event</var> with <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-type" id="ref-for-dom-event-type">type</a></code> = "layoutchange", <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-bubbles" id="ref-for-dom-event-bubbles">bubbles</a></code> to false, and <code class="idl"><a data-link-type="idl" href="https://dom.spec.whatwg.org/#dom-event-cancelable" id="ref-for-dom-event-cancelable">cancelable</a></code> to false</p>
+     <li data-md>
+      <p>Let <var>target</var> = the <code class="idl"><a data-link-type="idl" href="#dom-navigator-keyboard" id="ref-for-dom-navigator-keyboard">keyboard</a></code> attribute on the user agent’s <code class="idl"><a data-link-type="idl" href="https://html.spec.whatwg.org/multipage/system-state.html#navigator" id="ref-for-navigator②">Navigator</a></code> object.</p>
+     <li data-md>
+      <p><a data-link-type="dfn" href="https://dom.spec.whatwg.org/#concept-event-dispatch" id="ref-for-concept-event-dispatch">Dispatch</a> <var>event</var> at <var>target</var></p>
+    </ol>
+   </div>
    <h2 class="heading settled" data-level="4" id="integrations"><span class="secno">4. </span><span class="content">Integrations</span><a class="self-link" href="#integrations"></a></h2>
    <h3 class="heading settled" data-level="4.1" id="permissions-policy"><span class="secno">4.1. </span><span class="content">Permissions Policy</span><a class="self-link" href="#permissions-policy"></a></h3>
-   <p>This specification defines a feature that controls whether the <a data-link-type="dfn" href="#keyboard-getlayoutmap" id="ref-for-keyboard-getlayoutmap①">getLayoutMap()</a> method is exposed on the <code class="idl"><a data-link-type="idl" href="#keyboard" id="ref-for-keyboard②">Keyboard</a></code> interface.</p>
+   <p>This specification defines a feature that controls whether the <a data-link-type="dfn" href="#keyboard-getlayoutmap" id="ref-for-keyboard-getlayoutmap①">getLayoutMap()</a> method is exposed on the <code class="idl"><a data-link-type="idl" href="#keyboard" id="ref-for-keyboard③">Keyboard</a></code> interface.</p>
    <p>The feature name for this feature is "keyboard-map".</p>
    <p>The <a data-link-type="dfn" href="https://w3c.github.io/webappsec-permissions-policy/#default-allowlist" id="ref-for-default-allowlist">default allowlist</a> for this feature is "self".</p>
    <h2 class="heading settled" data-level="5" id="mobile"><span class="secno">5. </span><span class="content">Mobile Device Considerations</span><a class="self-link" href="#mobile"></a></h2>
@@ -1213,6 +1145,7 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   <ul class="index">
    <li><a href="#ascii-capable">ASCII-capable</a><span>, in § 2.5</span>
    <li><a href="#common-writing-system-keys">common writing system keys</a><span>, in § 2.5</span>
+   <li><a href="#fire-a-layoutchange-event">fire a layoutchange event</a><span>, in § 3.1.1</span>
    <li>
     getLayoutMap()
     <ul>
@@ -1228,13 +1161,57 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
     </ul>
    <li><a href="#keyboardlayoutmap">KeyboardLayoutMap</a><span>, in § 2.2</span>
    <li><a href="#layoutchange">layoutchange</a><span>, in § 3.1</span>
+   <li><a href="#dom-keyboard-onlayoutchange">onlayoutchange</a><span>, in § 2.3</span>
    <li><a href="#scancode">scancode</a><span>, in § 9</span>
   </ul>
+  <aside class="dfn-panel" data-for="term-for-event">
+   <a href="https://dom.spec.whatwg.org/#event">https://dom.spec.whatwg.org/#event</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-event">3.1.1. fire a layoutchange event</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-eventtarget">
+   <a href="https://dom.spec.whatwg.org/#eventtarget">https://dom.spec.whatwg.org/#eventtarget</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-eventtarget">2.3. Keyboard Interface</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-event-bubbles">
+   <a href="https://dom.spec.whatwg.org/#dom-event-bubbles">https://dom.spec.whatwg.org/#dom-event-bubbles</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-event-bubbles">3.1.1. fire a layoutchange event</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-event-cancelable">
+   <a href="https://dom.spec.whatwg.org/#dom-event-cancelable">https://dom.spec.whatwg.org/#dom-event-cancelable</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-event-cancelable">3.1.1. fire a layoutchange event</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-concept-event-dispatch">
+   <a href="https://dom.spec.whatwg.org/#concept-event-dispatch">https://dom.spec.whatwg.org/#concept-event-dispatch</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-concept-event-dispatch">3.1.1. fire a layoutchange event</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-event-type">
+   <a href="https://dom.spec.whatwg.org/#dom-event-type">https://dom.spec.whatwg.org/#dom-event-type</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-event-type">3.1.1. fire a layoutchange event</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-eventhandler">
+   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler">https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-eventhandler">2.3. Keyboard Interface</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-navigator">
    <a href="https://html.spec.whatwg.org/multipage/system-state.html#navigator">https://html.spec.whatwg.org/multipage/system-state.html#navigator</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-navigator">2.1. Navigator Interface</a>
     <li><a href="#ref-for-navigator①">2.1.1. keyboard</a>
+    <li><a href="#ref-for-navigator②">3.1.1. fire a layoutchange event</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-allowed-to-use">
@@ -1353,7 +1330,6 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
    <ul>
     <li><a href="#ref-for-Exposed">2.1. Navigator Interface</a>
     <li><a href="#ref-for-Exposed①">2.2. KeyboardLayoutMap Interface</a>
-    <li><a href="#ref-for-Exposed②">2.3. Keyboard Interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-idl-promise">
@@ -1373,7 +1349,6 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
    <a href="https://heycam.github.io/webidl/#SecureContext">https://heycam.github.io/webidl/#SecureContext</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-SecureContext">2.1. Navigator Interface</a>
-    <li><a href="#ref-for-SecureContext①">2.3. Keyboard Interface</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-securityerror">
@@ -1397,8 +1372,19 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
    <li>
+    <a data-link-type="biblio">[DOM]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-event">Event</span>
+     <li><span class="dfn-paneled" id="term-for-eventtarget">EventTarget</span>
+     <li><span class="dfn-paneled" id="term-for-dom-event-bubbles">bubbles</span>
+     <li><span class="dfn-paneled" id="term-for-dom-event-cancelable">cancelable</span>
+     <li><span class="dfn-paneled" id="term-for-concept-event-dispatch">dispatch</span>
+     <li><span class="dfn-paneled" id="term-for-dom-event-type">type</span>
+    </ul>
+   <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
+     <li><span class="dfn-paneled" id="term-for-eventhandler">EventHandler</span>
      <li><span class="dfn-paneled" id="term-for-navigator">Navigator</span>
      <li><span class="dfn-paneled" id="term-for-allowed-to-use">allowed to use</span>
      <li><span class="dfn-paneled" id="term-for-concept-document-window">associated document</span>
@@ -1449,8 +1435,12 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="normative"><span class="content">Normative References</span><a class="self-link" href="#normative"></a></h3>
   <dl>
+   <dt id="biblio-dom">[DOM]
+   <dd>Anne van Kesteren. <a href="https://dom.spec.whatwg.org/"><cite>DOM Standard</cite></a>. Living Standard. URL: <a href="https://dom.spec.whatwg.org/">https://dom.spec.whatwg.org/</a>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+   <dt id="biblio-keyboard-lock">[Keyboard-Lock]
+   <dd><a href="https://wicg.github.io/keyboard-lock/"><cite>Keyboard Lock</cite></a>. cg-draft. URL: <a href="https://wicg.github.io/keyboard-lock/">https://wicg.github.io/keyboard-lock/</a>
    <dt id="biblio-permissions-policy-1">[PERMISSIONS-POLICY-1]
    <dd>Ian Clelland. <a href="https://www.w3.org/TR/permissions-policy-1/"><cite>Permissions Policy</cite></a>. 16 July 2020. WD. URL: <a href="https://www.w3.org/TR/permissions-policy-1/">https://www.w3.org/TR/permissions-policy-1/</a>
    <dt id="biblio-rfc2119">[RFC2119]
@@ -1475,17 +1465,24 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   <c- b>readonly</c-> <c- b>maplike</c->&lt;<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><c- b>DOMString</c-></a>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-DOMString"><c- b>DOMString</c-></a>>;
 };
 
-[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#SecureContext"><c- g>SecureContext</c-></a>, <a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->] <c- b>interface</c-> <a href="#keyboard"><code><c- g>Keyboard</c-></code></a> {
+<c- b>interface</c-> <a href="#keyboard"><code><c- g>Keyboard</c-></code></a> : <a data-link-type="idl-name" href="https://dom.spec.whatwg.org/#eventtarget"><c- n>EventTarget</c-></a> {
   <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-promise"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#keyboardlayoutmap"><c- n>KeyboardLayoutMap</c-></a>> <a href="#dom-keyboard-getlayoutmap"><code><c- g>getLayoutMap</c-></code></a>();
+
+  <c- b>attribute</c-> <a data-link-type="idl-name" href="https://html.spec.whatwg.org/multipage/webappapis.html#eventhandler"><c- n>EventHandler</c-></a> <a data-type="EventHandler" href="#dom-keyboard-onlayoutchange"><code><c- g>onlayoutchange</c-></code></a>;
 };
 
 </pre>
+  <aside class="dfn-panel" data-for="dom-navigator-keyboard">
+   <b><a href="#dom-navigator-keyboard">#dom-navigator-keyboard</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-navigator-keyboard">3.1.1. fire a layoutchange event</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="navigator-keyboard">
    <b><a href="#navigator-keyboard">#navigator-keyboard</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-navigator-keyboard">2.1.1. keyboard</a>
     <li><a href="#ref-for-navigator-keyboard①">2.1. Navigator Interface</a>
-    <li><a href="#ref-for-navigator-keyboard②">3.1. The layoutchange Event</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="keyboardlayoutmap">
@@ -1499,9 +1496,9 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   <aside class="dfn-panel" data-for="keyboard">
    <b><a href="#keyboard">#keyboard</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-keyboard">2.1. Navigator Interface</a>
-    <li><a href="#ref-for-keyboard①">2.1.1. keyboard</a>
-    <li><a href="#ref-for-keyboard②">4.1. Permissions Policy</a>
+    <li><a href="#ref-for-keyboard">2.1. Navigator Interface</a> <a href="#ref-for-keyboard①">(2)</a>
+    <li><a href="#ref-for-keyboard②">2.1.1. keyboard</a>
+    <li><a href="#ref-for-keyboard③">4.1. Permissions Policy</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="keyboard-getlayoutmap">
@@ -1526,7 +1523,13 @@ See <a href="https://en.wikipedia.org/wiki/Scancode">https://en.wikipedia.org/wi
   <aside class="dfn-panel" data-for="layoutchange">
    <b><a href="#layoutchange">#layoutchange</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-layoutchange">3.1. The layoutchange Event</a> <a href="#ref-for-layoutchange①">(2)</a> <a href="#ref-for-layoutchange②">(3)</a>
+    <li><a href="#ref-for-layoutchange">3.1. The layoutchange Event</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="fire-a-layoutchange-event">
+   <b><a href="#fire-a-layoutchange-event">#fire-a-layoutchange-event</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-fire-a-layoutchange-event">3.1. The layoutchange Event</a> <a href="#ref-for-fire-a-layoutchange-event①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="scancode">
