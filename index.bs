@@ -221,7 +221,7 @@ spec:keyboard-lock-1; type:attribute; text:keyboard
 
 <h2 id="keyboard-events">Keyboard Events</h2>
 
-	<h3 id="layoutchange-event">The <dfn>layoutchange</dfn> Event</h2>
+	<h3 id="layoutchange-event">The <dfn export>layoutchange</dfn> Event</h2>
 	
 		When the user agent detects that the current keyboard layout has changed, then
 		it MUST [=fire a layoutchange event=]. The exact timing of a layout change depends
