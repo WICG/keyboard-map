@@ -328,7 +328,7 @@ spec:keyboard-lock-1; type:attribute; text:keyboard
 	
 	As a first line of defense for the user, this specification requires that the API
 	is only available from [=secure contexts=] and can only be called from the currently
-	active [=top-level browsing context=].
+	active [=top-level browsing context=] or granted access via [=policy-controlled feature=].
 
 	User agents that are concerned about the privacy impact of providing this
 	keyboard mapping information can also consider the following mitigations:
