@@ -259,16 +259,7 @@ spec:keyboard-lock-1; type:attribute; text:keyboard
 	<div class="algorithm" data-algorithm="fire-a-layoutchange-event">
 	<h4 id="h-fire-a-layoutchange-event"><dfn>fire a layoutchange event</dfn></h4>
 
-	To fire a "layoutchange" event, perform the following steps:
-
-		1. Let |event| = the result of
-			<a href="https://dom.spec.whatwg.org/#concept-event-create">creating</a> a new {{Event}}
-
-		1. <a href="https://dom.spec.whatwg.org/#concept-event-initialize">Initialize</a> |event| with {{type}} = "layoutchange", {{bubbles}} to false, and {{cancelable}} to false
-
-		1. Let |target| = the {{keyboard}} attribute on the user agent's {{Navigator}} object.
-
-		1. [=Dispatch=] |event| at |target|
+	To fire a "layoutchange" event, [=fire an event=] named <dfn event for=Keyboard>layoutchange</dfn> at the {{keyboard}} attribute on the user agent's {{Navigator}} object.
 
 	</div>
 	
