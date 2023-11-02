@@ -318,8 +318,10 @@ spec:keyboard-lock-1; type:attribute; text:keyboard
 	<h3 id="privacy-mitigations">Privacy Mitigations</h3>
 	
 	As a first line of defense for the user, this specification requires that the API
-	is only available from [=secure contexts=] and can only be called from the currently
-	active [=top-level browsing context=] or granted access via [=policy-controlled feature=].
+	is only available from [=secure contexts=] which have access to the corresponding
+	[=policy-controlled feature=]. This means includes only secure top-level document contexts,
+	as well as to nested browsing contexts loaded from the same origin as the top-most document
+	or nested browsing contexts which were explicitly granted access.
 
 	User agents that are concerned about the privacy impact of providing this
 	keyboard mapping information can also consider the following mitigations:
